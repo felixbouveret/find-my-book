@@ -1,6 +1,16 @@
 module.exports = {
-  extends: ['stylelint-config-standard', 'stylelint-config-prettier'],
-  // add your custom config here
-  // https://stylelint.io/user-guide/configuration
-  rules: {},
-}
+  extends: 'stylelint-config-rational-order',
+  rules: {
+    'order/properties-order': [[], { severity: 'warning' }],
+    'plugin/rational-order': [
+      true,
+      {
+        'border-in-box-model': true,
+        'empty-line-between-groups': true,
+        severity: 'warning',
+      },
+    ],
+  },
+
+  plugin: 'stylelint-order',
+};
