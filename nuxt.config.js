@@ -38,7 +38,7 @@ export default {
     loaders: {
       cssModules: {
         modules: {
-          localIdentName: '[name]__[local]__[hash:base64:5]',
+          localIdentName: '[folder]-[local]-[emoji]',
         },
       },
     },
