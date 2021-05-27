@@ -1,24 +1,28 @@
 <template>
   <div :class="$style.loginContainer">
-    <InputText
-      v-model="email"
-      :class="$style.input"
-      type="email"
-      label="Email"
-      placeholder="jack.doe@hey.com"
-    />
-    <InputText
-      v-model="password"
-      :class="$style.input"
-      type="password"
-      label="Password"
-      placeholder="password"
-    />
-    <Button :class="$style.button" @click="onSubmit">Submit</Button>
+    <h1>Login</h1>
+    <form @submit.prevent="login">
+      <InputText
+        v-model="username"
+        :class="$style.input"
+        type="username"
+        label="Username"
+        placeholder="jack"
+      />
+      <InputText
+        v-model="password"
+        :class="$style.input"
+        type="password"
+        label="Password"
+        placeholder="password"
+      />
+      <Button :class="$style.button">Submit</Button>
+    </form>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import InputText from '~/components/InputText';
 import Button from '~/components/Button';
 
@@ -32,14 +36,36 @@ export default {
 
   data() {
     return {
-      email: null,
+      username: null,
       password: null,
     };
   },
 
   methods: {
-    onSubmit() {
-      console.log(this.email, this.password);
+    ...mapActions('user', ['connectUser']),
+    async login() {
+      await this.$axios
+        .$post('api/login_check', {
+          username: this.username,
+          password: this.password,
+        })
+        .then((res) => {
+          this.$axios.setToken(res.token, 'Bearer');
+          this.$cookies.set(
+            'auth',
+            { token: res.token },
+            {
+              path: '/',
+              maxAge: 3600,
+            }
+          );
+
+          this.connectUser();
+          this.$router.push('/');
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     },
   },
 };
@@ -47,6 +73,7 @@ export default {
 
 <style lang="scss" module>
 .input {
+  width: 100%;
   margin-top: 8px;
 }
 
