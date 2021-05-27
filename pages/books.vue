@@ -4,8 +4,10 @@
 
 <script>
 import Books from '~/modules/Books';
+
 export default {
   components: { Books },
+  middleware: 'auth/isNotConnected',
 
   async asyncData({ params }) {
     const book = await fetch(`http://localhost:8000/books/all`)

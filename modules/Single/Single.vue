@@ -7,6 +7,7 @@
         <p class="singleIsbn">ISBN : {{ moduleData.isbn_code }}</p>
         <p class="singleSynopsis">Synopsis : {{ moduleData.synopsis }}</p>
         <p class="singleAverage">Average : {{ average.average }}</p>
+        <img :src="moduleData.img_url" alt="" />
       </div>
     </div>
   </section>
