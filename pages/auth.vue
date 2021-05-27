@@ -9,6 +9,7 @@ export default {
   components: {
     AuthModule,
   },
+  middleware: 'auth/isConnected',
 
   asyncData({ query }) {
     const isLoginActive = !!query.login;
