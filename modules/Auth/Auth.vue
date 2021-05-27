@@ -1,10 +1,12 @@
 <template>
   <div :class="$style.authRoot">
-    <div :class="$style.formContainer">
-      <AuthToggle v-model="isLoginActiveData" />
-      <Login v-if="isLoginActiveData" />
-      <Register v-else />
-    </div>
+    <Wrapper :class="$style.inner">
+      <div :class="$style.formContainer">
+        <AuthToggle v-model="isLoginActiveData" :class="$style.authToggle" />
+        <Login v-if="isLoginActiveData" />
+        <Register v-else />
+      </div>
+    </Wrapper>
   </div>
 </template>
 
@@ -33,16 +35,26 @@ export default {
 
 <style lang="scss" module>
 .authRoot {
-  display: flex;
   width: 100%;
   height: 100vh;
   min-height: 700px;
 }
 
+.inner {
+  display: flex;
+  justify-content: center;
+}
+
 .formContainer {
-  margin: auto;
+  width: auto;
+  min-width: 400px;
+  margin-top: 80px;
   padding: 24px;
-  border: solid 2px lightgray;
+  border: solid 2px #6d6d6d;
   border-radius: 8px;
+}
+
+.authToggle {
+  margin-bottom: 32px;
 }
 </style>

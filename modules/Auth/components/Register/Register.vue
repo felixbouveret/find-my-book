@@ -1,27 +1,30 @@
 <template>
-  <div>
-    <InputText
-      v-model="username"
-      :class="$style.input"
-      type="text"
-      label="Username"
-      placeholder="Jack"
-    />
-    <InputText
-      v-model="email"
-      :class="$style.input"
-      type="email"
-      label="Email"
-      placeholder="jack.doe@hey.com"
-    />
-    <InputText
-      v-model="password"
-      :class="$style.input"
-      type="password"
-      label="Password"
-      placeholder="password"
-    />
-    <Button :class="$style.button" @click="onSubmit">Submit</Button>
+  <div :class="$style.registerContainer">
+    <h1>Register</h1>
+    <form @submit.prevent="signUp">
+      <InputText
+        v-model="username"
+        :class="$style.input"
+        type="text"
+        label="Username"
+        placeholder="Jack"
+      />
+      <InputText
+        v-model="email"
+        :class="$style.input"
+        type="email"
+        label="Email"
+        placeholder="jack.doe@hey.com"
+      />
+      <InputText
+        v-model="password"
+        :class="$style.input"
+        type="password"
+        label="Password"
+        placeholder="password"
+      />
+      <Button :class="$style.button">Submit</Button>
+    </form>
   </div>
 </template>
 
@@ -37,8 +40,19 @@ export default {
   },
 
   methods: {
-    onSubmit() {
-      console.log(this.email, this.password);
+    async signUp() {
+      await this.$axios
+        .$post('api/register', {
+          email: this.email,
+          name: this.name,
+          password: this.password,
+        })
+        .then((res) => {
+          this.message = res.message;
+        })
+        .catch((error) => {
+          this.message = error.data.message;
+        });
     },
   },
 };
@@ -46,6 +60,7 @@ export default {
 
 <style lang="scss" module>
 .input {
+  width: 100%;
   margin-top: 8px;
 }
 
