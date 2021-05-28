@@ -23,6 +23,7 @@
 
 <script>
 import { mapActions } from 'vuex';
+import jwtDecode from 'jwt-decode';
 import InputText from '~/components/InputText';
 import Button from '~/components/Button';
 
@@ -51,6 +52,7 @@ export default {
         })
         .then((res) => {
           this.$axios.setToken(res.token, 'Bearer');
+          const decodedToken = jwtDecode(res.token);
           this.$cookies.set(
             'auth',
             { token: res.token },
@@ -59,8 +61,10 @@ export default {
               maxAge: 3600,
             }
           );
-
-          this.connectUser();
+          this.connectUser({
+            userId: decodedToken.id,
+            username: decodedToken.username,
+          });
           this.$router.push('/');
         })
         .catch((error) => {

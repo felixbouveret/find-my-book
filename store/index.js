@@ -6,9 +6,12 @@ export default () => {
     actions: {
       nuxtServerInit({ dispatch }) {
         const auth = this.$cookies.get('auth');
-        if (auth) {
+        const user = this.$cookies.get('user');
+        if (auth && user) {
           this.$axios.setToken(auth.token, 'Bearer');
-          dispatch('user/connectUser');
+          dispatch('user/connectUser', { ...user });
+        } else {
+          dispatch('user/disconnectUser');
         }
       },
     },

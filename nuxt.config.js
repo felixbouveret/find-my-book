@@ -23,7 +23,7 @@ export default {
   modules: ['@nuxtjs/axios', 'cookie-universal-nuxt'],
 
   axios: {
-    baseURL: 'http://localhost:8000',
+    baseURL: process.env.API_ENTRY_POINT,
   },
 
   build: {
