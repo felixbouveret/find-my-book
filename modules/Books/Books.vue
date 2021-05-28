@@ -3,7 +3,7 @@
     <div :class="$style.container">
       <ul :class="$style.booksList">
         <li v-for="item in moduleData" :key="item.id" :class="$style.booksItem">
-          <Single :module-data="item" />
+          <Card :card-data="item" />
         </li>
       </ul>
     </div>
@@ -11,11 +11,12 @@
 </template>
 
 <script>
-import Single from '~/modules/Single';
+import { Card } from './components';
+
 export default {
   name: 'BooksModule',
 
-  components: { Single },
+  components: { Card },
 
   props: {
     moduleData: {
@@ -27,11 +28,14 @@ export default {
 </script>
 
 <style lang="scss" module>
-.booksRoot {
-  .container {
-    .booksList {
-      list-style: none;
-    }
-  }
+.booksList {
+  display: flex;
+  flex-wrap: wrap;
+
+  list-style: none;
+}
+
+.booksItem {
+  width: 33%;
 }
 </style>
