@@ -11,7 +11,9 @@ import { mapActions } from 'vuex';
 import HomeModule from '~/modules/Home';
 
 export default {
-  components: { HomeModule },
+  components: {
+    HomeModule,
+  },
 
   methods: {
     ...mapActions('user', ['disconnectUser']),
@@ -19,4 +21,14 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  margin: 0 auto;
+
+  text-align: center;
+}
+</style>
