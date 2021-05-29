@@ -16,6 +16,7 @@ import Logo from '~/components/Logo';
 
 export default {
   name: 'NavbarModule',
+
   components: { Logo, Links, LogLinks },
 };
 </script>
@@ -24,8 +25,9 @@ export default {
 .navbar {
   display: flex;
   justify-content: space-between;
-  .left {
-    display: flex;
-  }
+}
+
+.left {
+  display: flex;
 }
 </style>
