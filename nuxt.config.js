@@ -12,7 +12,7 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  css: [],
+  css: ['~/styles/reset.css'],
 
   plugins: ['~/plugins/globalComponents.js', '~/plugins/axios'],
 
