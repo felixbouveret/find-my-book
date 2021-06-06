@@ -1,6 +1,6 @@
 <template>
   <Wrapper>
-    <SearchModule :module-data="data" :search-query="searchQuery" />
+    <SearchModule :module-data="data" :search-query="s" />
   </Wrapper>
 </template>
 
@@ -10,15 +10,12 @@ export default {
   components: { SearchModule },
   middleware: 'auth/isNotConnected',
 
-  async asyncData({ params }) {
-    const searchQuery = params.query;
-    const search = await fetch(
-      `http://localhost:8000/books/search/${params.query}`
-    )
+  async asyncData({ query: { s } }) {
+    const search = await fetch(`http://localhost:8000/books/search/${s}`)
       .then((res) => res.json())
       .catch((err) => console.error(err));
 
-    return { data: search, searchQuery };
+    return { data: search, s };
   },
 };
 </script>

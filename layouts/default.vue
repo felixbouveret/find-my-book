@@ -15,9 +15,10 @@ export default {
 };
 </script>
 
-<style>
+<style module>
 html {
   box-sizing: border-box;
+  padding-top: 80px;
 
   font-size: 16px;
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
