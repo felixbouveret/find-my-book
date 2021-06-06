@@ -1,9 +1,10 @@
 <template>
   <ul :class="$style.list">
     <li>
-      Categories
-      <SubMenu :menu-items="categories" />
+      <a :class="$style.link">Categories</a>
+      <SubMenu :class="$style.submenu" :menu-items="categories" />
     </li>
+    <li><a :class="$style.link" href="">Les mieux notés</a></li>
   </ul>
 </template>
 
@@ -30,10 +31,24 @@ export default {
 
 <style lang="scss" module>
 .list {
-  li {
-    line-height: 50px;
+  display: flex;
+  gap: 16px;
+}
 
-    list-style: none;
+.link {
+  display: inline-block;
+  padding: 8px;
+  border-radius: 8px;
+
+  color: black;
+  text-decoration: none;
+
+  &:hover {
+    background-color: white;
   }
+}
+
+.submenu {
+  position: absolute;
 }
 </style>

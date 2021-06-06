@@ -24,7 +24,11 @@ export default {
 <style lang="scss" module>
 .navbar {
   display: flex;
+  align-items: center;
   justify-content: space-between;
+  padding: 12px 0;
+
+  background-color: #c4c4c4;
 }
 
 .left {

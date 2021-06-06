@@ -18,8 +18,8 @@ export default {
 
   props: {
     menuItems: {
-      type: Object,
-      default: () => {},
+      type: Array,
+      default: () => [],
     },
   },
 };
