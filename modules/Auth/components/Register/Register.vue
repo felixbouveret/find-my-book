@@ -44,7 +44,7 @@ export default {
       await this.$axios
         .$post('api/register', {
           email: this.email,
-          name: this.name,
+          username: this.username,
           password: this.password,
         })
         .then((res) => {
