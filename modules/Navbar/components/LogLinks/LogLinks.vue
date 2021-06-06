@@ -1,17 +1,17 @@
 <template>
   <ul v-if="!connected" :class="$style.list">
-    <li><a href="/auth?login=true">Sign in</a></li>
+    <li><a href="/auth?login=true">Connexion</a></li>
     <li>
-      <Button>
-        <a href="/auth">Sign up</a>
-      </Button>
+      <Button href="/auth"> Inscription </Button>
     </li>
   </ul>
   <div v-else :class="$style.list">
     <p>
       {{ username }}
     </p>
-    <button @click="disconnectUser">Disconnect</button>
+    <button :class="$style.disconnect" @click="disconnectUser">
+      Deconnexion
+    </button>
   </div>
 </template>
 
@@ -37,15 +37,21 @@ export default {
 <style lang="scss" module>
 .list {
   display: flex;
-  a {
+  gap: 16px;
+  align-items: center;
+}
+
+.disconnect {
+  border: 0;
+
+  font-size: 16px;
+  text-decoration: underline;
+
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
     text-decoration: none;
-  }
-  li {
-    margin-right: 2rem;
-
-    line-height: 50px;
-
-    list-style: none;
   }
 }
 </style>

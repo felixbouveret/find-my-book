@@ -1,6 +1,11 @@
 <template>
   <form @submit.stop.prevent="getSearchResult">
-    <input v-model="searchQuery" type="text" :class="$style.searchBarRoot" />
+    <input
+      v-model="searchQuery"
+      type="text"
+      :class="$style.searchBarRoot"
+      :placeholder="placeholder"
+    />
   </form>
 </template>
 
@@ -8,18 +13,25 @@
 export default {
   name: 'SearchBar',
 
-  data() {
-    const searchQuery = '';
+  props: {
+    placeholder: {
+      type: String,
+      default: '',
+    },
+  },
 
-    return { searchQuery };
+  data() {
+    return {
+      searchQuery: null,
+    };
   },
 
   methods: {
     getSearchResult() {
-      fetch(`http://localhost:8000/books/search/${this.searchQuery}`)
-        .then((res) => res.json())
-        .then((json) => {
-          console.log(json);
+      this.$axios
+        .$post(`books/search/${this.searchQuery}`)
+        .then((res) => {
+          this.$emit('onSearch', { res, searchQuery: this.searchQuery });
         })
         .catch((err) => console.error(err));
     },
@@ -30,7 +42,10 @@ export default {
 <style lang="scss" module>
 .searchBarRoot {
   width: 100%;
-  max-width: 1200px;
   margin: 0 auto;
+  padding: 12px;
+
+  border: 0;
+  border-radius: 8px;
 }
 </style>

@@ -1,5 +1,8 @@
 <template>
-  <button :class="$style.button" @click="$emit('click')">
+  <a v-if="href" :href="href" :class="$style.button" @click="$emit('click')">
+    <slot />
+  </a>
+  <button v-else :class="$style.button" @click="$emit('click')">
     <slot />
   </button>
 </template>
@@ -7,19 +10,27 @@
 <script>
 export default {
   name: 'Button',
+  props: {
+    href: {
+      type: String,
+      default: '',
+    },
+  },
 };
 </script>
 
 <style lang="scss" module>
 .button {
-  padding: 5px;
+  padding: 12px;
   border: none;
-  border-radius: 2px;
+  border-radius: 8px;
 
-  background-color: #ffbe60;
-  box-shadow: gray 0 2px 2px 0;
-  a {
-    color: black;
-  }
+  color: white;
+
+  font-size: 16px;
+  text-decoration: none;
+
+  background-color: black;
+  cursor: pointer;
 }
 </style>

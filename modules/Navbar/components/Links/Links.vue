@@ -4,7 +4,7 @@
       <a :class="$style.link">Categories</a>
       <SubMenu :class="$style.submenu" :menu-items="categories" />
     </li>
-    <li><a :class="$style.link" href="">Les mieux notés</a></li>
+    <li><a :class="$style.link" href="/">Les mieux notés</a></li>
   </ul>
 </template>
 

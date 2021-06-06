@@ -1,5 +1,5 @@
 <template>
-  <NavbarModule />
+  <NavbarModule :class="$style.header" />
 </template>
 
 <script>
@@ -14,4 +14,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" module>
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+}
+</style>
