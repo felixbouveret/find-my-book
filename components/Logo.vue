@@ -5,7 +5,7 @@
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 341.89 43.78"
     width="200"
-    height="50"
+    height="40"
   >
     <defs>
       <style>
