@@ -1,12 +1,30 @@
 <template>
   <ul :class="$style.list">
-    <li><a href=""></a>Categories</li>
+    <li>
+      Categories
+      <SubMenu :menu-items="categories" />
+    </li>
   </ul>
 </template>
 
 <script>
+import SubMenu from '../Submenu';
+import { getCategories } from './Categories';
+
 export default {
   name: 'Links',
+
+  components: {
+    SubMenu,
+  },
+
+  data() {
+    const CATEGORIES = getCategories();
+
+    return {
+      categories: CATEGORIES,
+    };
+  },
 };
 </script>
 
