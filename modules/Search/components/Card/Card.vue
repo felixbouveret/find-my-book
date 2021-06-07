@@ -17,10 +17,6 @@ export default {
       default: () => {},
     },
   },
-  data() {
-    console.log(this.cardData);
-    return {};
-  },
 };
 </script>
 
