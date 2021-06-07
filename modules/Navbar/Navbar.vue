@@ -3,7 +3,7 @@
     <Wrapper :class="$style.inner">
       <div :class="$style.left">
         <a href="/">
-          <Logo />
+          <img :class="$style.logo" src="~/assets/logo.png" alt="" />
         </a>
         <Links />
       </div>
@@ -30,13 +30,12 @@
 
 <script>
 import { Links, LogLinks, SearchBarResults } from './components';
-import Logo from '~/components/Logo';
 import SearchBar from '~/components/SearchBar';
 
 export default {
   name: 'NavbarModule',
 
-  components: { Logo, Links, LogLinks, SearchBar, SearchBarResults },
+  components: { Links, LogLinks, SearchBar, SearchBarResults },
 
   data() {
     return {
@@ -63,6 +62,10 @@ export default {
   align-items: center;
   justify-content: space-between;
   padding: 12px 0;
+}
+
+.logo {
+  height: 40px;
 }
 
 .searchBar {

@@ -1,21 +1,26 @@
 <template>
   <Wrapper>
-    <SearchModule :module-data="data" :search-query="s" />
+    <SearchModule :module-data="data" :search-query="search" />
   </Wrapper>
 </template>
 
 <script>
 import SearchModule from '~/modules/Search';
 export default {
+  name: 'SearchPage',
+
   components: { SearchModule },
+
   middleware: 'auth/isNotConnected',
 
-  async asyncData({ query: { s } }) {
-    const search = await fetch(`http://localhost:8000/books/search/${s}`)
-      .then((res) => res.json())
-      .catch((err) => console.error(err));
+  async asyncData({ query: { s: search }, $axios }) {
+    try {
+      const data = await $axios.$get(`books/search/${search}`);
 
-    return { data: search, s };
+      return { data, search };
+    } catch (error) {
+      console.error(error);
+    }
   },
 };
 </script>

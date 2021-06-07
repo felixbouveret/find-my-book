@@ -9,12 +9,14 @@ export default {
   components: { Books },
   middleware: 'auth/isNotConnected',
 
-  async asyncData({ params }) {
-    const book = await fetch(`http://localhost:8000/books/all`)
-      .then((res) => res.json())
-      .catch((err) => console.error(err));
+  async asyncData({ $axios }) {
+    try {
+      const data = await $axios.$get(`books/all`);
 
-    return { data: book };
+      return { data };
+    } catch (error) {
+      console.error(error);
+    }
   },
 };
 </script>
