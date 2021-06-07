@@ -12,8 +12,10 @@
           {{ description }}
         </p>
         <div :class="$style.ctaBox">
-          <Button is-light>{{ ctaRegister }}</Button>
-          <Button>{{ ctaBooky }}</Button>
+          <Button :class="$style.cta" is-light href="auth/register">{{
+            ctaRegister
+          }}</Button>
+          <Button :class="$style.cta">{{ ctaBooky }}</Button>
         </div>
         <p :class="$style.disclaimer">
           {{ disclaimer }}
@@ -113,7 +115,7 @@ export default {
   max-width: 376px;
   margin-top: 24px;
 
-  button {
+  .cta {
     flex-grow: 1;
   }
 }

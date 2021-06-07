@@ -33,6 +33,7 @@ export default {
 
 <style lang="scss" module>
 .button {
+  display: block;
   padding: 12px;
   border: none;
   border-radius: 8px;
@@ -40,11 +41,13 @@ export default {
   color: white;
 
   font-size: 16px;
+  text-align: center;
   text-decoration: none;
 
   background-color: black;
   cursor: pointer;
 }
+
 .isLight {
   border: solid 2px black;
 
