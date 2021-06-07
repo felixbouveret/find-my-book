@@ -2,7 +2,7 @@
   <ul :class="$style.list">
     <template v-for="({ img_url, name, id }, index) in results">
       <li v-if="index < 5" :key="index" :class="$style.item">
-        <a :href="`/books/${id}`">
+        <a :href="`/single/${id}`">
           <img :src="img_url" :alt="name" :class="$style.image" />
           <p :class="$style.desc">{{ name }}</p>
         </a>
