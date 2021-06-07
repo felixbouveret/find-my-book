@@ -1,29 +1,32 @@
 <template>
-  <div :class="$style.registerContainer">
-    <h1>Register</h1>
+  <div :class="$style.container">
+    <h1 :class="$style.title">S'inscrire</h1>
     <form @submit.prevent="signUp">
       <InputText
         v-model="username"
         :class="$style.input"
-        type="text"
-        label="Username"
-        placeholder="Jack"
+        type="username"
+        label="Pseudo"
+        placeholder="JackDu32"
       />
       <InputText
         v-model="email"
         :class="$style.input"
         type="email"
         label="Email"
-        placeholder="jack.doe@hey.com"
+        placeholder="jackdu32@skyrock.fr"
       />
       <InputText
         v-model="password"
         :class="$style.input"
         type="password"
-        label="Password"
-        placeholder="password"
+        label="Mot de passe"
+        placeholder="mamy1234"
       />
-      <Button :class="$style.button">Submit</Button>
+      <div :class="$style.actions">
+        <Button :class="$style.button">S'inscrire</Button>
+        <a :class="$style.link" href="/auth/login">Se connecter</a>
+      </div>
     </form>
   </div>
 </template>
@@ -59,12 +62,32 @@ export default {
 </script>
 
 <style lang="scss" module>
-.input {
+.container {
   width: 100%;
-  margin-top: 8px;
 }
 
-.button {
+.title {
+  font-size: 32px;
+}
+
+.input {
+  width: 100%;
   margin-top: 16px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.link {
+  color: black;
+  font-size: 14px;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 </style>

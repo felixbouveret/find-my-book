@@ -1,8 +1,8 @@
 <template>
   <ul v-if="!connected" :class="$style.list">
-    <li><a href="/auth?login=true">Connexion</a></li>
+    <li><a href="/auth/login">Connexion</a></li>
     <li>
-      <Button href="/auth"> Inscription </Button>
+      <Button href="/auth/register"> Inscription </Button>
     </li>
   </ul>
   <div v-else :class="$style.list">

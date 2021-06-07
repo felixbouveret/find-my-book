@@ -47,16 +47,23 @@ export default {
 
 <style lang="scss" module>
 .InputTextContainer {
+  width: 100%;
 }
 
 .label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 16px;
+
+  font-size: 16px;
 }
 
 input {
-  padding: 8px;
-  border: solid 1px;
-  border-radius: 4px;
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 12px;
+  border: solid 2px;
+  border-radius: 8px;
+
+  font-size: 16px;
 }
 </style>

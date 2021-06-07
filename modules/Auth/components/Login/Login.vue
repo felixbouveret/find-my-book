@@ -1,22 +1,25 @@
 <template>
-  <div :class="$style.loginContainer">
-    <h1>Login</h1>
+  <div :class="$style.container">
+    <h1 :class="$style.title">Connexion</h1>
     <form @submit.prevent="login">
       <InputText
         v-model="username"
         :class="$style.input"
         type="username"
-        label="Username"
-        placeholder="jack"
+        label="Pseudo"
+        placeholder="JackDu32"
       />
       <InputText
         v-model="password"
         :class="$style.input"
         type="password"
-        label="Password"
-        placeholder="password"
+        label="Mot de passe"
+        placeholder="mamy1234"
       />
-      <Button :class="$style.button">Submit</Button>
+      <div :class="$style.actions">
+        <Button :class="$style.button">Se connecter</Button>
+        <a :class="$style.link" href="/auth/register">S'enregistrer</a>
+      </div>
     </form>
   </div>
 </template>
@@ -76,12 +79,32 @@ export default {
 </script>
 
 <style lang="scss" module>
-.input {
+.container {
   width: 100%;
-  margin-top: 8px;
 }
 
-.button {
-  margin-top: 8px;
+.title {
+  font-size: 32px;
+}
+
+.input {
+  width: 100%;
+  margin-top: 16px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.link {
+  color: black;
+  font-size: 14px;
+
+  &:hover {
+    text-decoration: none;
+  }
 }
 </style>

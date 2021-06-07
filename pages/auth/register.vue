@@ -1,5 +1,5 @@
 <template>
-  <AuthModule :is-login-active="isLoginActive" />
+  <AuthModule />
 </template>
 
 <script>
@@ -9,13 +9,8 @@ export default {
   components: {
     AuthModule,
   },
-
   middleware: 'auth/isConnected',
-
-  asyncData({ query }) {
-    const isLoginActive = !!query.login;
-
-    return { isLoginActive };
-  },
 };
 </script>
+
+<style></style>
