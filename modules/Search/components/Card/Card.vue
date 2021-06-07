@@ -26,6 +26,8 @@ export default {
 
 <style lang="scss" module>
 .cardRoot {
+  position: relative;
+
   display: flex;
 
   width: 500px;
@@ -34,6 +36,21 @@ export default {
   border-radius: 5px;
 
   background-color: #f3f3f3;
+
+  &:before {
+    position: absolute;
+    top: -50px;
+    left: -45px;
+
+    padding: 24px;
+
+    border-radius: 1000px;
+
+    background-color: #ff007a;
+    transform: scale(0.6);
+
+    content: url('~/assets/img/book.svg');
+  }
 
   .cardDetails {
     margin-left: 24px;
@@ -47,9 +64,9 @@ export default {
     .singleSynopsys {
       display: -webkit-box;
       max-height: 200px;
+      overflow: hidden;
       -webkit-line-clamp: 10;
       -webkit-box-orient: vertical;
-      overflow: hidden;
     }
   }
 }
