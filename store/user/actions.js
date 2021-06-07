@@ -21,6 +21,5 @@ export default {
     commit('SET_USER_ID', null);
     commit('SET_USERNAME', null);
     commit('SET_CONNECTION', false);
-    this.$router.push('/auth/login');
   },
 };

@@ -1,21 +1,22 @@
 <template>
-  <section :class="$style.homeRoot">
-    <div :class="$style.container">
-      <SearchBar />
-    </div>
-  </section>
+  <div :class="$style.homeRoot">
+    <Hero />
+  </div>
 </template>
 
 <script>
-import SearchBar from '~/components/SearchBar';
+import { Hero } from './components';
+
 export default {
   name: 'HomeModule',
-
-  components: { SearchBar },
+  components: {
+    Hero,
+  },
 };
 </script>
 
 <style lang="scss" module>
 .homeRoot {
+  padding-top: 32px;
 }
 </style>

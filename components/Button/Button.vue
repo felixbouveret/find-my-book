@@ -1,19 +1,31 @@
 <template>
-  <a v-if="href" :href="href" :class="$style.button" @click="$emit('click')">
+  <component
+    :is="href ? 'a' : 'button'"
+    :href="href ? href : null"
+    :class="[
+      $style.button,
+      {
+        [$style.isLight]: isLight,
+      },
+    ]"
+    @click="$emit('click')"
+  >
     <slot />
-  </a>
-  <button v-else :class="$style.button" @click="$emit('click')">
-    <slot />
-  </button>
+  </component>
 </template>
 
 <script>
 export default {
   name: 'Button',
+
   props: {
     href: {
       type: String,
       default: '',
+    },
+    isLight: {
+      type: Boolean,
+      default: false,
     },
   },
 };
@@ -32,5 +44,12 @@ export default {
 
   background-color: black;
   cursor: pointer;
+}
+.isLight {
+  border: solid 2px black;
+
+  color: black;
+
+  background-color: white;
 }
 </style>
