@@ -9,6 +9,7 @@
       <p :class="$style.average">Average : {{ average.average }}</p>
     </div>
     <div :class="$style.rightPart">
+      <div :class="$style.likeButton" @click="addLikeToBook(moduleData.id)" />
       <div :class="$style.singleImg">
         <img :src="moduleData.img_url" :alt="moduleData.name" />
       </div>
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'SingleModule',
 
@@ -29,6 +31,10 @@ export default {
       type: Object,
       default: () => {},
     },
+  },
+
+  methods: {
+    ...mapActions('user', ['addLikeToBook']),
   },
 };
 </script>
@@ -81,11 +87,33 @@ export default {
     }
   }
   .rightPart {
+    position: relative;
+
     width: 50%;
     padding: 0 5px;
     @media screen and (max-width: 768px) {
       width: 100%;
     }
+
+    .likeButton {
+      position: absolute;
+      top: -50px;
+      right: 0px;
+
+      padding: 24px;
+
+      border-radius: 1000px;
+
+      background-color: #ff007a;
+      transform: scale(0.6);
+
+      content: url('~/assets/img/heart.svg');
+
+      &:hover {
+        background-color: rgba($color: #ff007a, $alpha: 0.7);
+      }
+    }
+
     .singleImg {
       width: 100%;
       height: 100%;
