@@ -2,7 +2,7 @@ export default {
   head: {
     title: 'find-my-book-front',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'fr',
     },
     meta: [
       { charset: 'utf-8' },
@@ -12,14 +12,17 @@ export default {
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
-  css: ['~/styles/reset.css'],
+  css: ['@/styles/reset.css', '@/styles/commons'],
 
   plugins: ['~/plugins/globalComponents.js', '~/plugins/axios'],
 
   components: true,
 
-  buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
-
+  buildModules: [
+    '@nuxtjs/eslint-module',
+    '@nuxtjs/stylelint-module',
+    '@nuxtjs/svg',
+  ],
   modules: ['@nuxtjs/axios', 'cookie-universal-nuxt'],
 
   axios: {
