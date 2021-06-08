@@ -5,7 +5,7 @@
       :key="index"
       :class="$style.item"
     >
-      <a :href="'category?c=' + id">
+      <a :href="`category?c=${id}`">
         {{ label }}
       </a>
     </li>

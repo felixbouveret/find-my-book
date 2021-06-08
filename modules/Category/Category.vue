@@ -6,7 +6,9 @@
         :selected-category="selectedCategory"
       />
       <div :class="$style.booksListing">
-        <h1 v-if="isCategorySelected">Sélectionne une catégorie gros FDP</h1>
+        <h1 :class="$style.title" v-if="isCategorySelected">
+          Sélectionne une catégorie gros FDP
+        </h1>
         <ul :class="$style.booksList">
           <li
             v-for="item in moduleData"
@@ -55,11 +57,10 @@ export default {
 <style lang="scss" module>
 .booksListing {
   margin-top: 32px;
-}
-
-h1 {
-  font-size: 32px;
-  text-align: center;
+  .title {
+    font-size: 32px;
+    text-align: center;
+  }
 }
 
 .booksList {
