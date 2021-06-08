@@ -12,12 +12,12 @@
           {{ description }}
         </p>
         <div :class="$style.ctaBox">
-          <Button :class="$style.cta" is-light href="auth/register">{{
+          <Button v-if="!connected" is-light href="auth/register">{{
             ctaRegister
           }}</Button>
-          <Button :class="$style.cta">{{ ctaBooky }}</Button>
+          <Button :class="[{ [$style.cta]: connected }]">{{ ctaBooky }}</Button>
         </div>
-        <p :class="$style.disclaimer">
+        <p v-if="!connected" :class="$style.disclaimer">
           {{ disclaimer }}
         </p>
       </div>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import message from './message.json';
 import Button from '~/components/Button';
 
@@ -38,10 +39,17 @@ export default {
       ...message,
     };
   },
+  computed: {
+    ...mapState('user', ['connected', 'username']),
+  },
 };
 </script>
 
 <style lang="scss" module>
+.cta {
+  width: 50%;
+}
+
 .heroContainer {
   margin-bottom: 80px;
   padding: 0 24px;
