@@ -51,11 +51,10 @@ export default {
           password: this.password,
         })
         .then((res) => {
-          this.message = res.message;
           this.$router.push('/auth/login');
         })
         .catch((error) => {
-          this.message = error.data.message;
+          console.error(error);
         });
     },
   },
