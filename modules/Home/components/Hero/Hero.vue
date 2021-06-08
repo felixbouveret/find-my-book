@@ -12,10 +12,17 @@
           {{ description }}
         </p>
         <div :class="$style.ctaBox">
-          <Button v-if="!connected" is-light href="auth/register">{{
-            ctaRegister
+          <Button
+            v-if="!connected"
+            is-light
+            :class="$style.cta"
+            href="auth/register"
+          >
+            {{ ctaRegister }}
+          </Button>
+          <Button :class="[{ [$style.cta]: !connected }]">{{
+            ctaBooky
           }}</Button>
-          <Button :class="[{ [$style.cta]: connected }]">{{ ctaBooky }}</Button>
         </div>
         <p v-if="!connected" :class="$style.disclaimer">
           {{ disclaimer }}
@@ -46,10 +53,6 @@ export default {
 </script>
 
 <style lang="scss" module>
-.cta {
-  width: 50%;
-}
-
 .heroContainer {
   margin-bottom: 80px;
   padding: 0 24px;
