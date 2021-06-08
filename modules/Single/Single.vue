@@ -9,6 +9,7 @@
       <p :class="$style.average">Average : {{ average.average }}</p>
     </div>
     <div :class="$style.rightPart">
+      <div :class="$style.likeButton" @click="addLikeToBook(moduleData.id)" />
       <div :class="$style.singleImg">
         <img :src="moduleData.img_url" :alt="moduleData.name" />
       </div>
@@ -17,6 +18,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   name: 'SingleModule',
 
@@ -30,66 +32,95 @@ export default {
       default: '',
     },
   },
+
+  methods: {
+    ...mapActions('user', ['addLikeToBook']),
+  },
 };
 </script>
 
 <style lang="scss" module>
 .singleRoot {
-  padding: 2rem 0;
+  display: flex;
+  justify-content: space-around;
+  max-width: 95vw;
   max-height: calc(100vh - 66px);
+  margin: 0 auto;
+  padding: 2rem 0;
+  overflow: hidden;
   @media screen and (max-width: 768px) {
     max-height: none;
   }
-  max-width: 95vw;
-  margin: 0 auto;
-  overflow: hidden;
-  display: flex;
   @media screen and (max-width: 768px) {
     display: block;
   }
-  justify-content: space-around;
 
   .leftPart {
-    padding: 0 15px 0 5px;
     width: 50%;
+    padding: 0 15px 0 5px;
     @media screen and (max-width: 768px) {
       width: 100%;
     }
     .title {
-      font-size: 50px;
-      font-weight: 900;
       color: brown;
+      font-weight: 900;
+      font-size: 50px;
     }
     .author {
-      font-weight: 700;
       padding: 1rem 0;
+
+      font-weight: 700;
     }
     .isbn {
-      font-weight: 400;
       color: #b6b6b6;
+      font-weight: 400;
     }
     .synopsisTitle {
-      font-weight: 700;
       padding: 2rem 0 1rem 0;
+
+      font-weight: 700;
     }
     .average {
       padding: 2rem 0;
+
       font-weight: 700;
     }
   }
   .rightPart {
+    position: relative;
+
+    width: 50%;
     padding: 0 5px;
     @media screen and (max-width: 768px) {
       width: 100%;
     }
-    width: 50%;
+
+    .likeButton {
+      position: absolute;
+      top: -50px;
+      right: 0px;
+
+      padding: 24px;
+
+      border-radius: 1000px;
+
+      background-color: #ff007a;
+      transform: scale(0.6);
+
+      content: url('~/assets/img/heart.svg');
+
+      &:hover {
+        background-color: rgba($color: #ff007a, $alpha: 0.7);
+      }
+    }
+
     .singleImg {
       width: 100%;
       height: 100%;
 
       img {
-        height: 100%;
         width: 100%;
+        height: 100%;
         object-fit: contain;
       }
     }
