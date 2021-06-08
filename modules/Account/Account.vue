@@ -13,14 +13,14 @@ import Button from '~/components/Button';
 
 export default {
   name: 'AccountModule',
+
+  components: { Button },
   props: {
     userEmail: {
       type: String,
       default: '',
     },
   },
-
-  components: { Button },
 
   computed: {
     ...mapState('user', ['connected', 'username']),
@@ -38,12 +38,13 @@ export default {
     margin: 10px 0;
   }
   .delete {
-    background-color: red;
     width: 150px;
+
+    background-color: red;
   }
   width: 95vw;
-  margin: 0 auto;
   height: calc(100vh - 92px);
+  margin: 0 auto;
   margin-top: 20px;
 }
 </style>
