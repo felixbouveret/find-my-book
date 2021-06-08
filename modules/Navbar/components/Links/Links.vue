@@ -10,7 +10,6 @@
 
 <script>
 import SubMenu from '../Submenu';
-import { getCategories } from './Categories';
 
 export default {
   name: 'Links',
@@ -20,11 +19,13 @@ export default {
   },
 
   data() {
-    const CATEGORIES = getCategories();
-
     return {
-      categories: CATEGORIES,
+      categories: [],
     };
+  },
+
+  async fetch() {
+    this.categories = await this.$axios.$get(`categories/limit/5`);
   },
 };
 </script>

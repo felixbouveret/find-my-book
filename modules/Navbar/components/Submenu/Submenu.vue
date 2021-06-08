@@ -1,13 +1,16 @@
 <template>
   <ul :class="$style.container">
     <li
-      v-for="({ name, link }, index) in menuItems"
+      v-for="({ label, id }, index) in menuItems"
       :key="index"
       :class="$style.item"
     >
-      <a :href="link">
-        {{ name }}
+      <a :href="'category?c=' + id">
+        {{ label }}
       </a>
+    </li>
+    <li :class="$style.item">
+      <a href="category"> Voir tout </a>
     </li>
   </ul>
 </template>
