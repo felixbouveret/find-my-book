@@ -68,5 +68,9 @@ h1 {
   align-items: center;
   justify-content: center;
   margin-top: 64px;
+
+  li {
+    margin: 32px;
+  }
 }
 </style>
