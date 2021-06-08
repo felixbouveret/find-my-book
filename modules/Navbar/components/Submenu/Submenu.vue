@@ -10,7 +10,7 @@
       </a>
     </li>
     <li :class="$style.item">
-      <a href="category"> Voir tout </a>
+      <a href="/category"> Voir tout </a>
     </li>
   </ul>
 </template>
