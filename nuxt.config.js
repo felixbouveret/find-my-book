@@ -20,7 +20,7 @@ export default {
 
   buildModules: ['@nuxtjs/eslint-module', '@nuxtjs/stylelint-module'],
 
-  modules: ['@nuxtjs/axios', 'cookie-universal-nuxt'],
+  modules: ['@nuxtjs/axios', 'cookie-universal-nuxt', '@nuxtjs/toast'],
 
   axios: {
     baseURL: process.env.API_ENTRY_POINT,

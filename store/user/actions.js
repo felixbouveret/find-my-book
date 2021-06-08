@@ -22,4 +22,13 @@ export default {
     commit('SET_USERNAME', null);
     commit('SET_CONNECTION', false);
   },
+
+  addLikeToBook({ state }, bookId) {
+    this.$axios
+      .$post(`user/${state.userId}/likes/${bookId}/add`)
+      .then((res) => {
+        this.$toast.show(res.message);
+      })
+      .catch((err) => console.error(err));
+  },
 };
