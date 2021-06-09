@@ -3,7 +3,11 @@
     <Wrapper :class="$style.inner">
       <div :class="$style.left">
         <a href="/">
-          <img :class="$style.logo" src="~/assets/findmybooklogo.png" alt="" />
+          <img
+            :class="$style.logo"
+            src="~/assets/img/findmybooklogo.svg"
+            alt=""
+          />
         </a>
         <Links />
       </div>
