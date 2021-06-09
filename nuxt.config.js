@@ -17,7 +17,11 @@ export default {
 
   css: ['@/styles/reset.css', '@/styles/_modules'],
 
-  plugins: ['~/plugins/globalComponents.js', '~/plugins/axios'],
+  plugins: [
+    '~/plugins/globalComponents.js',
+    '~/plugins/axios',
+    { src: '~/plugins/vuex-persist', ssr: false },
+  ],
 
   components: true,
 
