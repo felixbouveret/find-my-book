@@ -2,19 +2,19 @@
   <div :class="$style.selectCategoriesContainer">
     <h2 :class="$style.title">Livres</h2>
     <p :class="$style.desc">
-      Qu'elle genre de lecteur es-tu ? Selectionne 3 catégories qui te plaisent
-      dans cette liste non exhaustive.
+      Parmis ces livres, lesquels te donnent le plus envie ? Choisis les bien,
+      tu ne peux en selectionner que 3 !
     </p>
-    <!-- <ul :class="$style.categoryList">
+    <ul :class="$style.categoryList">
       <li
-        v-for="{ label, id } in categories"
+        v-for="{ name, id } in categories"
         :key="id"
         :class="[$style.category, { [$style.isActive]: isActive(id) }]"
         @click="addCategory(id)"
       >
-        {{ label }}
+        {{ name }}
       </li>
-    </ul> -->
+    </ul>
     <NavButtons
       :is-active="isStepValid"
       @next-step="$emit('next-step', selectedBooks)"
@@ -38,7 +38,7 @@ export default {
     return {
       isLoading: false,
       maxBooks: 3,
-      books: [],
+      categories: [],
       selectedBooks: this.$store.state.booky.selectedBooks,
     };
   },
@@ -46,7 +46,7 @@ export default {
   async fetch() {
     try {
       this.isLoading = true;
-      this.books = await this.$axios.$post(`bookinator/firststep`, {
+      this.categories = await this.$axios.$post('bookinator/firststep', {
         categorieChoosen: this.selectedCategories,
       });
 
@@ -59,29 +59,29 @@ export default {
   computed: {
     ...mapState('booky', ['selectedCategories']),
 
-    // canAddCategories() {
-    //   return this.maxCategories > this.selectedCategories.length;
-    // },
+    canAddBooks() {
+      return this.maxBooks > this.selectedBooks.length;
+    },
 
-    // isStepValid() {
-    //   return !!this.selectedCategories.length;
-    // },
+    isStepValid() {
+      return !!this.selectedBooks.length;
+    },
   },
 
-  // methods: {
-  //   addCategory(categoryId) {
-  //     if (!this.selectedCategories.includes(categoryId)) {
-  //       if (this.canAddCategories) this.selectedCategories.push(categoryId);
-  //     } else {
-  //       const categoryIndex = this.selectedCategories.indexOf(categoryId); // get  "car" index
-  //       this.selectedCategories.splice(categoryIndex, 1);
-  //     }
-  //   },
+  methods: {
+    addBook(bookId) {
+      if (!this.selectedBooks.includes(bookId)) {
+        if (this.canAddBooks) this.selectedBooks.push(bookId);
+      } else {
+        const bookIndex = this.selectedBooks.indexOf(bookId); // get  "car" index
+        this.selectedBooks.splice(bookIndex, 1);
+      }
+    },
 
-  //   isActive(categoryId) {
-  //     return this.selectedCategories.includes(categoryId);
-  //   },
-  // },
+    isActive(bookId) {
+      return this.selectedBooks.includes(bookId);
+    },
+  },
 };
 </script>
 

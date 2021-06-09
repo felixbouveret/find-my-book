@@ -6,7 +6,6 @@ export default {
   SelectBooks: {
     component: () => import('./components/SelectBooks'),
     action: 'booky/setSelectedBooks',
-    apiCall: '/bookinator/firststep',
   },
   Results: {
     component: () => import('./components/Results'),

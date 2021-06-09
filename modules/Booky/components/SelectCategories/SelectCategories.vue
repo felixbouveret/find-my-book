@@ -18,7 +18,7 @@
     <NavButtons
       :is-active="isStepValid"
       @next-step="$emit('next-step', selectedCategories)"
-      @previous-step="$emit('previous-step')"
+      @previous-step="$router.push('/')"
     />
   </div>
 </template>
