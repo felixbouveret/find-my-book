@@ -34,7 +34,8 @@ export default {
   display: flex;
   justify-content: center;
   max-width: 400px;
-  padding: 32px;
+  margin-bottom: 32px;
+  padding: 48px;
   border-radius: 8px;
 
   background-color: $light-grey;

@@ -54,20 +54,20 @@ export default {
 
       border-radius: 1000px;
 
-      background-color: #ff007a;
+      background-color: $red;
       transform: scale(0.6);
 
       content: url('~/assets/img/heart.svg');
 
       &:hover {
-        background-color: rgba($color: #ff007a, $alpha: 0.7);
+        background-color: rgba($color: $red, $alpha: 0.7);
       }
     }
 
     .cardDetails {
       margin-left: 24px;
       .singleTitle {
-        font-size: 14px;
+        font-size: 24px;
       }
       .singleAuthor,
       .singleSynopsys {
@@ -77,7 +77,7 @@ export default {
         display: -webkit-box;
         max-height: 200px;
         overflow: hidden;
-        -webkit-line-clamp: 10;
+        -webkit-line-clamp: 7;
         -webkit-box-orient: vertical;
       }
     }

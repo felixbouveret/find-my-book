@@ -48,6 +48,8 @@ export default {
 }
 
 .categoryItem {
+  position: relative;
+
   display: block;
   padding: 8px 12px;
   border-radius: 8px;
@@ -56,17 +58,50 @@ export default {
 
   text-decoration: none;
 
-  background-color: rgb(237, 237, 237);
   cursor: pointer;
 
   transition: background-color 0.3s;
 
+  &:before {
+    position: absolute;
+
+    bottom: -5px;
+    left: 0;
+
+    width: 0%;
+    height: 3px;
+
+    background-color: $red;
+
+    transition: width 0.2s ease-in-out;
+
+    content: '';
+  }
+
   &:hover {
-    background-color: rgb(203, 203, 203);
+    &:before {
+      width: 100%;
+    }
   }
 
   &.selectedCategory {
-    border: solid 2px black;
+    position: relative;
+
+    &:before {
+      position: absolute;
+
+      bottom: -5px;
+      left: 0;
+
+      width: 100%;
+      height: 3px;
+
+      background-color: $red;
+
+      transition: width 0.2s ease-in-out;
+
+      content: '';
+    }
   }
 }
 </style>

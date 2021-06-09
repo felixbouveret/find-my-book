@@ -34,7 +34,7 @@ export default {
 <style lang="scss" module>
 .gradesRoot {
   width: 100;
-  margin-top: 32px;
+  margin: 4rem 0;
   .container {
     .gradesHeader {
       padding: 24px;
