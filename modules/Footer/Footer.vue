@@ -8,9 +8,12 @@
           alt=""
         />
       </a>
-      <a href="">test</a>
-      <a href="">test</a>
-      <p>Copyright : Benoit, Bastien, Félix, Estelle</p>
+      <a href="">Mentions légales</a>
+      <a href="">Conditions d'utilisations</a>
+      <p>
+        Copyright : Benoit Lamonica, Bastien Rigaud, Félix Bouveret, Estelle
+        Denage
+      </p>
     </Wrapper>
   </div>
 </template>
