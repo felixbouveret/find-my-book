@@ -33,10 +33,12 @@ export default {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
+  align-items: center;
+  justify-items: flex-start;
   padding: 24px;
   border-radius: 8px;
 
-  background-color: #c4c4c4;
+  background-color: $light-grey;
 
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
 }
@@ -45,11 +47,35 @@ export default {
   display: block;
 
   a {
+    position: relative;
+
     display: block;
     padding: 16px;
     border-radius: 8px;
 
-    background-color: #e9e9e9;
+    color: black;
+    text-decoration: black;
+
+    &:before {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      width: 3px;
+      height: 0;
+
+      background-color: $red;
+
+      transition: height 0.2s ease-in-out;
+
+      content: '';
+    }
+
+    &:hover {
+      &:before {
+        height: 100%;
+      }
+    }
   }
 }
 </style>
