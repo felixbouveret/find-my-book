@@ -1,5 +1,6 @@
 <template>
   <div :class="$style.cardRoot">
+    <div :class="$style.likeButton" @click="addLikeToBook(cardData.book.id)" />
     <img :src="cardData.book.img_url" alt="" />
     <div :class="$style.cardDetails">
       <h2 :class="$style.singleTitle">{{ cardData.book.name }}</h2>
@@ -11,12 +12,17 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 export default {
   props: {
     cardData: {
       type: Object,
       default: () => {},
     },
+  },
+
+  methods: {
+    ...mapActions('user', ['addLikeToBook']),
   },
 };
 </script>
@@ -34,7 +40,7 @@ export default {
 
   background-color: #f3f3f3;
 
-  &:before {
+  .likeButton {
     position: absolute;
     top: -50px;
     left: -45px;
@@ -46,7 +52,11 @@ export default {
     background-color: #ff007a;
     transform: scale(0.6);
 
-    content: url('~/assets/img/book.svg');
+    content: url('~/assets/img/heart.svg');
+
+    &:hover {
+      background-color: rgba($color: #ff007a, $alpha: 0.7);
+    }
   }
 
   .cardDetails {
