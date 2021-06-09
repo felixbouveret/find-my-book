@@ -1,9 +1,9 @@
 <template>
   <div :class="$style.container">
     <p>Username : {{ username }}</p>
-    <p>Email : {{ email }}</p>
+    <p>Email : {{ userEmail }}</p>
     <Button @click="disconnectUser"> Deconnexion </Button>
-    <a href="#">Delete account</a>
+    <Button :class="$style.delete" href="#">Delete account</Button>
   </div>
 </template>
 
@@ -13,6 +13,12 @@ import Button from '~/components/Button';
 
 export default {
   name: 'AccountModule',
+  props: {
+    userEmail: {
+      type: String,
+      default: '',
+    },
+  },
 
   components: { Button },
 
@@ -28,6 +34,15 @@ export default {
 
 <style lang="scss" module>
 .container {
+  p {
+    margin: 10px 0;
+  }
+  .delete {
+    background-color: red;
+    width: 150px;
+  }
+  width: 95vw;
+  margin: 0 auto;
   height: calc(100vh - 92px);
   margin-top: 20px;
 }
