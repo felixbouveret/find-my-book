@@ -1,26 +1,35 @@
 <template>
   <section :class="$style.singleRoot">
-    <div :class="$style.leftPart">
-      <h1 :class="$style.title">{{ moduleData.name }}</h1>
-      <h2 :class="$style.author">{{ moduleData.auteur }}</h2>
-      <p :class="$style.isbn">ISBN : {{ moduleData.isbn_code }}</p>
-      <p :class="$style.synopsisTitle">Synopsis :</p>
-      <p :class="$style.synopsis">{{ moduleData.synopsis }}</p>
-      <p :class="$style.average">Average : {{ average.average }}</p>
-    </div>
-    <div :class="$style.rightPart">
-      <div :class="$style.likeButton" @click="addLikeToBook(moduleData.id)" />
-      <div :class="$style.singleImg">
-        <img :src="moduleData.img_url" :alt="moduleData.name" />
+    <div :class="$style.singleMain">
+      <div :class="$style.leftPart">
+        <h1 :class="$style.title">{{ moduleData.name }}</h1>
+        <h2 :class="$style.author">{{ moduleData.auteur }}</h2>
+        <p :class="$style.isbn">ISBN : {{ moduleData.isbn_code }}</p>
+        <p :class="$style.synopsisTitle">Synopsis :</p>
+        <p :class="$style.synopsis">{{ moduleData.synopsis }}</p>
+        <p :class="$style.average">Average : {{ average.average }}</p>
       </div>
+      <div :class="$style.rightPart">
+        <div :class="$style.likeButton" @click="addLikeToBook(moduleData.id)" />
+        <div :class="$style.singleImg">
+          <img :src="moduleData.img_url" :alt="moduleData.name" />
+        </div>
+      </div>
+    </div>
+    <div :class="$style.singleCommentaryRoot">
+      <h2>Commentaires :</h2>
+      <CommentaryListing :module-data="commentary" :book-id="moduleData.id" />
     </div>
   </section>
 </template>
 
 <script>
 import { mapActions } from 'vuex';
+import { CommentaryListing } from './components';
 export default {
   name: 'SingleModule',
+
+  components: { CommentaryListing },
 
   props: {
     moduleData: {
@@ -31,6 +40,10 @@ export default {
       type: Object,
       default: () => {},
     },
+    commentary: {
+      type: Array,
+      default: () => [],
+    },
   },
 
   methods: {
@@ -40,7 +53,7 @@ export default {
 </script>
 
 <style lang="scss" module>
-.singleRoot {
+.singleMain {
   display: flex;
   justify-content: space-around;
   max-width: 95vw;
@@ -125,5 +138,9 @@ export default {
       }
     }
   }
+}
+
+.singleCommentaryRoot {
+  padding: 2rem;
 }
 </style>

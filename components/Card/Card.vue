@@ -1,12 +1,14 @@
 <template>
   <div :class="$style.cardRoot">
-    <div :class="$style.likeButton" @click="addLikeToBook(cardData.id)" />
-    <img :src="cardData.img_url" alt="" />
-    <div :class="$style.cardDetails">
-      <h2 :class="$style.singleTitle">{{ cardData.name }}</h2>
-      <p :class="$style.singleAuthor">by {{ cardData.auteur }}</p>
-      <p :class="$style.singleSynopsys">{{ cardData.synopsis }}</p>
-    </div>
+    <a :href="`/single/${cardData.id}`">
+      <div :class="$style.likeButton" @click="addLikeToBook(cardData.id)" />
+      <img :src="cardData.img_url" alt="" />
+      <div :class="$style.cardDetails">
+        <h2 :class="$style.singleTitle">{{ cardData.name }}</h2>
+        <p :class="$style.singleAuthor">by {{ cardData.auteur }}</p>
+        <p :class="$style.singleSynopsys">{{ cardData.synopsis }}</p>
+      </div>
+    </a>
   </div>
 </template>
 
@@ -28,51 +30,56 @@ export default {
 
 <style lang="scss" module>
 .cardRoot {
-  position: relative;
+  a {
+    position: relative;
 
-  display: flex;
+    display: flex;
 
-  width: 500px;
-  height: 300px;
-  padding: 24px;
-  border-radius: 5px;
-
-  background-color: #f3f3f3;
-
-  .likeButton {
-    position: absolute;
-    top: -50px;
-    left: -45px;
-
+    width: 500px;
+    height: 300px;
     padding: 24px;
+    border-radius: 5px;
 
-    border-radius: 1000px;
+    color: unset;
+    text-decoration: none;
 
-    background-color: #ff007a;
-    transform: scale(0.6);
+    background-color: #f3f3f3;
 
-    content: url('~/assets/img/heart.svg');
+    .likeButton {
+      position: absolute;
+      top: -50px;
+      left: -45px;
 
-    &:hover {
-      background-color: rgba($color: #ff007a, $alpha: 0.7);
+      padding: 24px;
+
+      border-radius: 1000px;
+
+      background-color: #ff007a;
+      transform: scale(0.6);
+
+      content: url('~/assets/img/heart.svg');
+
+      &:hover {
+        background-color: rgba($color: #ff007a, $alpha: 0.7);
+      }
     }
-  }
 
-  .cardDetails {
-    margin-left: 24px;
-    .singleTitle {
-      font-size: 14px;
-    }
-    .singleAuthor,
-    .singleSynopsys {
-      margin-top: 10px;
-    }
-    .singleSynopsys {
-      display: -webkit-box;
-      max-height: 200px;
-      overflow: hidden;
-      -webkit-line-clamp: 10;
-      -webkit-box-orient: vertical;
+    .cardDetails {
+      margin-left: 24px;
+      .singleTitle {
+        font-size: 14px;
+      }
+      .singleAuthor,
+      .singleSynopsys {
+        margin-top: 10px;
+      }
+      .singleSynopsys {
+        display: -webkit-box;
+        max-height: 200px;
+        overflow: hidden;
+        -webkit-line-clamp: 10;
+        -webkit-box-orient: vertical;
+      }
     }
   }
 }

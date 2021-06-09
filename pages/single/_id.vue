@@ -1,5 +1,5 @@
 <template>
-  <Single :module-data="data" :average="average" />
+  <Single :module-data="data" :average="average" :commentary="commentary" />
 </template>
 
 <script>
@@ -17,7 +17,11 @@ export default {
         `singlebook/notes/average/${params.id}`
       );
 
-      return { data, average };
+      const commentary = await await $axios.$get(
+        `singlebook/commentary/${params.id}`
+      );
+
+      return { data, average, commentary };
     } catch (e) {
       console.error(e);
     }
