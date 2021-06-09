@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$style.selectCategoriesContainer">
     <h2 :class="$style.title">Categories</h2>
     <p :class="$style.desc">
       Qu'elle genre de lecteur es-tu ? Selectionne 3 catégories qui te plaisent
@@ -15,19 +15,30 @@
         {{ label }}
       </li>
     </ul>
+    <NavButtons
+      :is-active="isStepValid"
+      @next-step="$emit('next-step', selectedCategories)"
+      @previous-step="$emit('previous-step')"
+    />
   </div>
 </template>
 
 <script>
+import NavButtons from '../NavButtons';
+
 export default {
   name: 'SelectCategories',
+
+  components: {
+    NavButtons,
+  },
 
   data() {
     return {
       isLoading: false,
       maxCategories: 3,
       categories: [],
-      selectedCategories: [],
+      selectedCategories: this.$store.state.booky.selectedCategories,
     };
   },
 
@@ -44,6 +55,10 @@ export default {
   computed: {
     canAddCategories() {
       return this.maxCategories > this.selectedCategories.length;
+    },
+
+    isStepValid() {
+      return !!this.selectedCategories.length;
     },
   },
 
@@ -65,6 +80,12 @@ export default {
 </script>
 
 <style lang="scss" module>
+.selectCategoriesContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .title,
 .desc {
   text-align: center;
@@ -83,7 +104,6 @@ export default {
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
-  max-width: 720px;
   margin-top: 24px;
 }
 

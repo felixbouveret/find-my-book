@@ -3,11 +3,14 @@
     <Wrapper :class="$style.inner">
       <h1>Booky</h1>
       <div :class="$style.steps">
-        <transition name="fade-in">
-          <components :is="currentStep.component" />
-        </transition>
-        <div :class="$style.buttonContainer">
-          <Button @click="incrementSteps">click</Button>
+        <div :class="$style.step">
+          <transition name="fade-in">
+            <components
+              :is="currentStep.component"
+              @previous-step="decrementSteps()"
+              @next-step="submitStep($event)"
+            />
+          </transition>
         </div>
       </div>
     </Wrapper>
@@ -46,6 +49,22 @@ export default {
       this.stepIndex++;
       if (stepList.length === this.stepIndex) this.stepIndex = 0;
     },
+
+    decrementSteps() {
+      if (this.stepIndex > 0) this.stepIndex--;
+    },
+
+    submitStep(payload) {
+      const action = this.currentStep.action;
+      this.$store.dispatch(action, payload);
+      this.incrementSteps();
+    },
+
+    previousStep(payload) {
+      const action = this.currentStep.action;
+      this.$store.dispatch(action, payload);
+      this.incrementSteps();
+    },
   },
 };
 </script>
@@ -63,6 +82,10 @@ export default {
   border-radius: 8px;
 
   background-color: lightgray;
+}
+
+.step {
+  max-width: 720px;
 }
 
 .buttonContainer {

@@ -6,6 +6,7 @@
       $style.button,
       {
         [$style.isLight]: isLight,
+        [$style.isDisabled]: isDisabled,
       },
     ]"
     @click="$emit('click')"
@@ -24,6 +25,10 @@ export default {
       default: '',
     },
     isLight: {
+      type: Boolean,
+      default: false,
+    },
+    isDisabled: {
       type: Boolean,
       default: false,
     },
@@ -63,6 +68,16 @@ export default {
     color: white;
 
     background-color: $red;
+  }
+}
+.isDisabled {
+  color: white;
+
+  background-color: rgba($color: $red, $alpha: 0.5);
+  cursor: default;
+
+  &:hover {
+    background-color: rgba($color: $red, $alpha: 0.5);
   }
 }
 </style>
