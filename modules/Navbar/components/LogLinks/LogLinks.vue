@@ -6,9 +6,9 @@
     </li>
   </ul>
   <div v-else :class="$style.list">
-    <p>
+    <a href="/account">
       {{ username }}
-    </p>
+    </a>
     <button :class="$style.disconnect" @click="disconnectUser">
       Deconnexion
     </button>
