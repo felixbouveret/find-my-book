@@ -16,13 +16,13 @@
             v-if="!connected"
             is-light
             :class="$style.cta"
-            href="auth/register"
+            href="/auth/register"
           >
             {{ ctaRegister }}
           </Button>
-          <Button :class="[{ [$style.cta]: !connected }]">{{
-            ctaBooky
-          }}</Button>
+          <Button :class="[{ [$style.cta]: !connected }]" href="/booky">
+            {{ ctaBooky }}
+          </Button>
         </div>
         <p v-if="!connected" :class="$style.disclaimer">
           {{ disclaimer }}

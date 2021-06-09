@@ -1,5 +1,6 @@
 import Vuex from 'vuex';
 import user from './user';
+import booky from './booky';
 
 export default () => {
   return new Vuex.Store({
@@ -17,6 +18,7 @@ export default () => {
     },
     modules: {
       user,
+      booky,
     },
   });
 };
