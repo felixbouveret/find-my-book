@@ -1,6 +1,7 @@
 <template>
   <div :class="$style.container">
     <ul :class="$style.commentaryList">
+      <AddCommentary :book-id="bookId" />
       <CommentaryItem
         v-for="(item, index) in moduleData"
         :key="index"
@@ -12,15 +13,20 @@
 
 <script>
 import CommentaryItem from '../CommentaryItem';
+import AddCommentary from '../AddCommentary';
 export default {
   name: 'CommentaryListing',
 
-  components: { CommentaryItem },
+  components: { CommentaryItem, AddCommentary },
 
   props: {
     moduleData: {
       type: Array,
       default: () => [],
+    },
+    bookId: {
+      type: Number,
+      default: 0,
     },
   },
 };

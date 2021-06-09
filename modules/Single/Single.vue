@@ -18,7 +18,7 @@
     </div>
     <div :class="$style.singleCommentaryRoot">
       <h2>Commentaires :</h2>
-      <CommentaryListing :module-data="commentary" />
+      <CommentaryListing :module-data="commentary" :book-id="moduleData.id" />
     </div>
   </section>
 </template>
