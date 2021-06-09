@@ -1,5 +1,6 @@
 export default {
-  mode: 'universal',
+  target: 'static',
+
   head: {
     title: 'find-my-book-front',
     htmlAttrs: {
