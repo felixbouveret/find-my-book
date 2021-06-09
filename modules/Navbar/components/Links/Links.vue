@@ -39,6 +39,8 @@ export default {
 }
 
 .link {
+  position: relative;
+
   display: inline-block;
   padding: 8px;
   border-radius: 8px;
@@ -49,7 +51,25 @@ export default {
   transition: 0.3s background-color;
 
   &:hover {
-    background-color: white;
+    &:before {
+      width: 100%;
+    }
+  }
+
+  &:before {
+    position: absolute;
+
+    bottom: -5px;
+    left: 0;
+
+    width: 0;
+    height: 3px;
+
+    background-color: $red;
+
+    transition: width 0.2s ease-in-out;
+
+    content: '';
   }
 }
 
@@ -103,6 +123,7 @@ export default {
 
   &::before {
     position: absolute;
+    top: 0;
 
     width: 100%;
     height: 24px;

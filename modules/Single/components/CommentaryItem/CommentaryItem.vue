@@ -21,13 +21,15 @@ export default {
 <style lang="scss" module>
 .commentaryItem {
   margin-top: 12px;
-  padding: 16px;
+  padding: 24px;
   border-radius: 8px;
 
-  background-color: #c4c4c4;
+  background-color: $light-grey;
 
   p {
     margin-top: 10px;
+
+    line-height: 120%;
   }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <ul v-if="!connected" :class="$style.list">
-    <li><a href="/auth/login">Connexion</a></li>
+    <li><a href="/auth/login" :class="$style.loginButton">Connexion</a></li>
     <li>
       <Button href="/auth/register"> Inscription </Button>
     </li>
@@ -39,6 +39,22 @@ export default {
   display: flex;
   gap: 16px;
   align-items: center;
+
+  .loginButton {
+    padding: 10px;
+    border: 1px solid $red;
+    border-radius: 8px;
+
+    color: $red;
+    font-size: 16px;
+    text-decoration: none;
+
+    &:hover {
+      color: white;
+
+      background-color: $red;
+    }
+  }
 }
 
 .disconnect {

@@ -45,7 +45,7 @@ export default {
   margin: 80px 0;
   padding: 64px 24px;
 
-  background-color: #f2f2f2;
+  background-color: $light-red;
 }
 
 .inner {
@@ -55,6 +55,8 @@ export default {
 }
 
 .title {
+  color: $light-grey;
+  font-weight: 600;
   font-size: 32px;
 }
 

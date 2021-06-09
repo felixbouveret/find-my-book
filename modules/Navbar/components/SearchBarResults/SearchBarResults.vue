@@ -37,10 +37,10 @@ export default {
 .list {
   position: absolute;
 
-  padding: 24px 0;
+  padding: 8px 0;
   border-radius: 8px;
 
-  background-color: #c4c4c4;
+  background-color: $light-grey;
 
   box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.08);
 }
@@ -50,13 +50,21 @@ export default {
   align-items: center;
   padding: 12px 24px;
 
+  color: black;
+
+  text-decoration: none;
+
+  p {
+    color: black;
+  }
+
   &:hover {
-    background-color: #d7d7d7;
+    background-color: $dark-grey;
   }
 }
 
 .image {
-  width: 64px;
+  width: 32px;
   height: auto;
 }
 

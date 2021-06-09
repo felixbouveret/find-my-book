@@ -1,18 +1,16 @@
 <template>
   <div :class="$style.homeRoot">
     <Hero />
-    <HowItWorks />
   </div>
 </template>
 
 <script>
-import { Hero, HowItWorks } from './components';
+import { Hero } from './components';
 
 export default {
   name: 'HomeModule',
   components: {
     Hero,
-    HowItWorks,
   },
 };
 </script>

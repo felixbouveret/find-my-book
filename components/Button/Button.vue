@@ -44,15 +44,25 @@ export default {
   text-align: center;
   text-decoration: none;
 
-  background-color: black;
+  background-color: $red;
   cursor: pointer;
+
+  &:hover {
+    background-color: rgba($color: $red, $alpha: 0.6);
+  }
 }
 
 .isLight {
-  border: solid 2px black;
+  border: solid 2px $red;
 
-  color: black;
+  color: $red;
 
   background-color: white;
+
+  &:hover {
+    color: white;
+
+    background-color: $red;
+  }
 }
 </style>

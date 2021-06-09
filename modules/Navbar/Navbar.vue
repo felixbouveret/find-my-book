@@ -3,7 +3,11 @@
     <Wrapper :class="$style.inner">
       <div :class="$style.left">
         <a href="/">
-          <img :class="$style.logo" src="~/assets/findmybooklogo.png" alt="" />
+          <img
+            :class="$style.logo"
+            src="~/assets/img/findmybooklogo.svg"
+            alt=""
+          />
         </a>
         <Links />
       </div>
@@ -55,7 +59,9 @@ export default {
 
 <style lang="scss" module>
 .navbar {
-  background-color: #c4c4c4;
+  background-color: $light-grey;
+  box-shadow: 0 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 100px 80px rgba(0, 0, 0, 0.07);
 }
 .inner {
   display: flex;

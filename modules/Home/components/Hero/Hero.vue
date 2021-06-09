@@ -2,7 +2,7 @@
   <section :class="$style.heroContainer">
     <Wrapper :class="$style.inner">
       <div :class="$style.view">
-        <img src="~/assets/img/booky.png" alt="" />
+        <img src="~/assets/img/perso.svg" alt="" />
       </div>
       <div :class="$style.desc">
         <h1 :class="$style.title">
@@ -54,8 +54,23 @@ export default {
 
 <style lang="scss" module>
 .heroContainer {
+  position: relative;
+
   margin-bottom: 80px;
   padding: 0 24px;
+
+  &:before {
+    position: absolute;
+    top: 10%;
+    right: 0;
+    z-index: -1;
+
+    width: 100%;
+
+    transform: translateX(30%);
+
+    content: url('~/assets/img/clouds.svg');
+  }
 }
 
 .inner {
@@ -109,6 +124,7 @@ export default {
 }
 
 .title {
+  font-weight: 600;
   font-size: 54px;
   line-height: 64px;
 }
