@@ -4,13 +4,8 @@
     <p :class="$style.desc">
       Voici une selection de livres que je te propose d'ajouter à ta liste !
     </p>
-    <div :class="$style.categoryList">
-      <Card
-        v-for="(book, id) in books"
-        :key="id"
-        :card-data="book"
-        :class="[$style.category, { [$style.isActive]: isActive(id) }]"
-      />
+    <div :class="$style.bookList">
+      <Card v-for="(book, id) in books" :key="id" :card-data="book" />
     </div>
     <NavButtons
       :is-active="true"
@@ -79,11 +74,10 @@ export default {
   line-height: 24px;
 }
 
-.categoryList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  justify-content: center;
+.bookList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
   margin-top: 24px;
 }
 

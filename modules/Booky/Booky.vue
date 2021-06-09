@@ -1,7 +1,7 @@
 <template>
   <section :class="$style.stepperContainer">
     <Wrapper :class="$style.inner">
-      <h1>Booky</h1>
+      <h1 :class="$style.title">Booky</h1>
       <div :class="$style.steps">
         <div :class="$style.step">
           <transition name="fade-in">
@@ -74,10 +74,15 @@ export default {
   margin-top: 80px;
 }
 
+.title {
+  text-align: center;
+}
+
 .steps {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 32px;
   padding: 32px;
   border-radius: 8px;
 

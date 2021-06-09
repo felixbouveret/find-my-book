@@ -7,10 +7,10 @@
     </p>
     <ul :class="$style.categoryList">
       <li
-        v-for="{ name, id } in categories"
+        v-for="{ name, id } in books"
         :key="id"
         :class="[$style.category, { [$style.isActive]: isActive(id) }]"
-        @click="addCategory(id)"
+        @click="addBook(id)"
       >
         {{ name }}
       </li>
@@ -38,7 +38,7 @@ export default {
     return {
       isLoading: false,
       maxBooks: 3,
-      categories: [],
+      books: [],
       selectedBooks: this.$store.state.booky.selectedBooks,
     };
   },
@@ -46,7 +46,7 @@ export default {
   async fetch() {
     try {
       this.isLoading = true;
-      this.categories = await this.$axios.$post('bookinator/firststep', {
+      this.books = await this.$axios.$post('bookinator/firststep', {
         categorieChoosen: this.selectedCategories,
       });
 
