@@ -8,14 +8,19 @@
       rows="10"
     >
     </textarea>
-    <button type="submit">Poster le commentaire</button>
+    <Button>Poser le commentaire</Button>
   </form>
 </template>
 
 <script>
 import { mapState } from 'vuex';
+import Button from '~/components/Button';
 export default {
   name: 'AddCommentary',
+
+  components: {
+    Button,
+  },
 
   props: {
     bookId: {
@@ -56,7 +61,8 @@ export default {
   display: flex;
   flex-direction: column;
 
-  button {
+  Button {
+    max-width: 200px;
     margin-top: 16px;
   }
 }

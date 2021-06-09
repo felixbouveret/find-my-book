@@ -7,7 +7,7 @@
         <p :class="$style.isbn">ISBN : {{ moduleData.isbn_code }}</p>
         <p :class="$style.synopsisTitle">Synopsis :</p>
         <p :class="$style.synopsis">{{ moduleData.synopsis }}</p>
-        <p :class="$style.average">Average : {{ average.average }}</p>
+        <p :class="$style.average">Note moyenne : {{ average.average }}</p>
       </div>
       <div :class="$style.rightPart">
         <div :class="$style.likeButton" @click="addLikeToBook(moduleData.id)" />
@@ -59,7 +59,7 @@ export default {
   max-width: 95vw;
   max-height: calc(100vh - 66px);
   margin: 0 auto;
-  padding: 2rem 0;
+  padding: 4rem 0;
   overflow: hidden;
   @media screen and (max-width: 768px) {
     max-height: none;
@@ -75,14 +75,15 @@ export default {
       width: 100%;
     }
     .title {
-      color: brown;
+      color: $red;
       font-weight: 900;
-      font-size: 50px;
+      font-size: 32px;
     }
     .author {
       padding: 1rem 0;
 
       font-weight: 700;
+      font-size: 24px;
     }
     .isbn {
       color: #b6b6b6;
@@ -117,13 +118,13 @@ export default {
 
       border-radius: 1000px;
 
-      background-color: #ff007a;
+      background-color: $red;
       transform: scale(0.6);
 
       content: url('~/assets/img/heart.svg');
 
       &:hover {
-        background-color: rgba($color: #ff007a, $alpha: 0.7);
+        background-color: rgba($color: $red, $alpha: 0.7);
       }
     }
 

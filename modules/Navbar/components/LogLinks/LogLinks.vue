@@ -48,6 +48,12 @@ export default {
     color: $red;
     font-size: 16px;
     text-decoration: none;
+
+    &:hover {
+      color: white;
+
+      background-color: $red;
+    }
   }
 }
 

@@ -37,7 +37,7 @@ export default {
   padding: 32px;
   border-radius: 8px;
 
-  background-color: #dfdfdf;
+  background-color: $light-grey;
 }
 
 .formContainer {
@@ -45,7 +45,7 @@ export default {
   min-width: 400px;
   margin-top: 80px;
   padding: 24px;
-  border: solid 2px #6d6d6d;
+  border: solid 2px $light-grey;
   border-radius: 8px;
 }
 </style>

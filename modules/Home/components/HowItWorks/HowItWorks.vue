@@ -45,7 +45,7 @@ export default {
   margin: 80px 0;
   padding: 64px 24px;
 
-  background-color: $red;
+  background-color: $light-red;
 }
 
 .inner {

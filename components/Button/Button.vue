@@ -46,6 +46,10 @@ export default {
 
   background-color: $red;
   cursor: pointer;
+
+  &:hover {
+    background-color: rgba($color: $red, $alpha: 0.6);
+  }
 }
 
 .isLight {
@@ -54,5 +58,11 @@ export default {
   color: $red;
 
   background-color: white;
+
+  &:hover {
+    color: white;
+
+    background-color: $red;
+  }
 }
 </style>
