@@ -19,7 +19,7 @@
         <Squeleton v-else />
       </div>
       <div v-else :class="$style.waitingSearch">
-        <h2 :class="$style.secondTitle">Sélectionne une catégorie gros FDP</h2>
+        <h2 :class="$style.secondTitle">Sélectionne une catégorie stp ^^</h2>
 
         <div :class="$style.searchIcon">
           <SearchIcon />
