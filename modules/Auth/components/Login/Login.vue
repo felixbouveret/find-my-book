@@ -16,8 +16,14 @@
         label="Mot de passe"
         placeholder="mamy1234"
       />
+      <MessageBox
+        :error-message="errorMessage"
+        :success-message="successMessage"
+      />
       <div :class="$style.actions">
-        <Button :class="$style.button">Se connecter</Button>
+        <Button :class="$style.button" :is-loading="isLoading">
+          Se connecter
+        </Button>
         <a :class="$style.link" href="/auth/register">S'enregistrer</a>
       </div>
     </form>
@@ -27,6 +33,7 @@
 <script>
 import { mapActions } from 'vuex';
 import jwtDecode from 'jwt-decode';
+import MessageBox from '../MessageBox';
 import InputText from '~/components/InputText';
 import Button from '~/components/Button';
 
@@ -36,18 +43,32 @@ export default {
   components: {
     InputText,
     Button,
+    MessageBox,
   },
 
   data() {
     return {
       username: null,
       password: null,
+      isLoading: false,
+      errorMessage: '',
+      successMessage: '',
     };
+  },
+
+  watch: {
+    username() {
+      this.resetErrorMessage();
+    },
+    password() {
+      this.resetErrorMessage();
+    },
   },
 
   methods: {
     ...mapActions('user', ['connectUser']),
     async login() {
+      this.isLoading = true;
       await this.$axios
         .$post('api/login_check', {
           username: this.username,
@@ -68,11 +89,19 @@ export default {
             userId: decodedToken.id,
             username: decodedToken.username,
           });
-          this.$router.push('/');
+          this.isLoading = false;
+          this.successMessage = 'Connecté ! Tu vas être redirigé...';
+          setTimeout(() => this.$router.push('/'), 2000);
         })
         .catch((error) => {
           console.error(error);
+          this.isLoading = false;
+          this.errorMessage = error.data.message;
         });
+    },
+
+    resetErrorMessage() {
+      if (this.errorMessage) this.errorMessage = '';
     },
   },
 };
@@ -106,5 +135,13 @@ export default {
   &:hover {
     text-decoration: none;
   }
+}
+
+.error {
+  color: $red;
+}
+
+.successMessage {
+  color: $green;
 }
 </style>

@@ -23,8 +23,14 @@
         label="Mot de passe"
         placeholder="mamy1234"
       />
+      <MessageBox
+        :error-message="errorMessage"
+        :success-message="successMessage"
+      />
       <div :class="$style.actions">
-        <Button :class="$style.button">S'inscrire</Button>
+        <Button :class="$style.button" :is-loading="isLoading"
+          >S'inscrire</Button
+        >
         <a :class="$style.link" href="/auth/login">Se connecter</a>
       </div>
     </form>
@@ -32,30 +38,62 @@
 </template>
 
 <script>
+import MessageBox from '../MessageBox';
+
 export default {
   name: 'Login',
+
+  components: {
+    MessageBox,
+  },
+
   data() {
     return {
       username: null,
       email: null,
       password: null,
+      isLoading: false,
+      errorMessage: '',
+      successMessage: '',
     };
+  },
+
+  watch: {
+    username() {
+      this.resetErrorMessage();
+    },
+    email() {
+      this.resetErrorMessage();
+    },
+    password() {
+      this.resetErrorMessage();
+    },
   },
 
   methods: {
     async signUp() {
+      this.isLoading = true;
       await this.$axios
         .$post('api/register', {
           email: this.email,
           username: this.username,
           password: this.password,
         })
-        .then((res) => {
-          this.$router.push('/auth/login');
+        .then(() => {
+          this.isLoading = false;
+          this.successMessage =
+            'Tu es maintenant enregistré ! Tu vas être bientôt redirigé pour te connecter';
+          setInterval(() => this.$router.push('/auth/login'), 2000);
         })
         .catch((error) => {
           console.error(error);
+          this.isLoading = false;
+          this.errorMessage = error.data.message;
         });
+    },
+
+    resetErrorMessage() {
+      if (this.errorMessage) this.errorMessage = '';
     },
   },
 };

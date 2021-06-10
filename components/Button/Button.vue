@@ -7,11 +7,14 @@
       {
         [$style.isLight]: isLight,
         [$style.isDisabled]: isDisabled,
+        [$style.isLoading]: isLoading,
       },
     ]"
     @click="$emit('click')"
   >
-    <slot />
+    <span :class="$style.content">
+      <slot />
+    </span>
   </component>
 </template>
 
@@ -29,6 +32,10 @@ export default {
       default: false,
     },
     isDisabled: {
+      type: Boolean,
+      default: false,
+    },
+    isLoading: {
       type: Boolean,
       default: false,
     },
@@ -78,6 +85,40 @@ export default {
 
   &:hover {
     background-color: rgba($color: $red, $alpha: 0.5);
+  }
+}
+
+.isLoading {
+  position: relative;
+
+  .content {
+    opacity: 0;
+  }
+  &::after :global {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 24px;
+    height: 24px;
+    border: solid 2px white;
+    border-bottom-color: transparent;
+    border-radius: 16px;
+
+    transform: translate(-50%, -50%);
+
+    animation: loading 1s infinite linear;
+
+    content: '';
+  }
+}
+
+@keyframes :global(loading) {
+  from {
+    transform: translate(-50%, -50%) rotate(0);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 </style>
