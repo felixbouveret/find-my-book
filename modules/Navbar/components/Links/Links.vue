@@ -25,7 +25,11 @@ export default {
   },
 
   async fetch() {
-    this.categories = await this.$axios.$get(`categories/limit/5`);
+    try {
+      this.categories = await this.$axios.$get(`categories/limit/5`);
+    } catch (error) {
+      console.log(error);
+    }
   },
 };
 </script>
