@@ -71,7 +71,7 @@ export default {
 
 <style lang="scss" module>
 .stepperContainer {
-  margin-top: 80px;
+  margin: 80px 0 120px;
 }
 
 .title {
@@ -87,10 +87,6 @@ export default {
   border-radius: 8px;
 
   background-color: lightgray;
-}
-
-.step {
-  max-width: 720px;
 }
 
 .buttonContainer {

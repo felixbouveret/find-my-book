@@ -93,6 +93,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 720px;
 }
 
 .title,

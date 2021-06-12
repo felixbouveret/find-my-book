@@ -6,7 +6,14 @@
     </p>
     <div :class="$style.bookList">
       <template v-if="books.length">
-        <Card v-for="(book, id) in books" :key="id" :card-data="book" />
+        <BookCard
+          v-for="{ auteur, id, img_url, name } in books"
+          :id="id"
+          :key="id"
+          :author="auteur"
+          :thumbnail="img_url"
+          :title="name"
+        />
       </template>
       <template v-else>
         <Skeleton />
@@ -15,6 +22,7 @@
     </div>
     <NavButtons
       :is-active="true"
+      next-step-wording="Terminer"
       @next-step="$router.push('/auth/register')"
       @previous-step="$emit('previous-step')"
     />
@@ -24,14 +32,14 @@
 <script>
 import { mapState } from 'vuex';
 import NavButtons from '../NavButtons';
-import Card from '~/components/Card';
+import BookCard from '~/components/BookCard';
 
 export default {
   name: 'SelectBooks',
 
   components: {
     NavButtons,
-    Card,
+    BookCard,
   },
 
   data() {
@@ -83,8 +91,19 @@ export default {
 .bookList {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 32px;
-  margin-top: 24px;
+  gap: 48px;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 64px;
+
+  @media (min-width: 800px) {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 780px;
+  }
+  @media (min-width: 1100px) {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1000px;
+  }
 }
 
 .category {
