@@ -10,17 +10,11 @@
         :selected-category="categoryId"
         @set-category="categoryId = $event"
       />
-      <div v-if="categoryId" :class="$style.booksListing">
-        <ul v-if="!isLoading" :class="$style.booksList">
-          <li v-for="item in bookList" :key="item.id" :class="$style.bookItem">
-            <Card :card-data="item" />
-          </li>
-        </ul>
-        <div v-else :class="$style.placeholder">
-          <Skeleton />
-          <Skeleton />
-        </div>
-      </div>
+      <BooksList
+        v-if="categoryId"
+        :book-list="bookList"
+        :is-loading="isLoading"
+      />
       <div v-else :class="$style.waitingSearch">
         <h2 :class="$style.secondTitle">Sélectionne une catégorie stp ^^</h2>
 
@@ -33,15 +27,17 @@
 </template>
 
 <script>
-import { ListingCategories } from './components';
-import Card from '~/components/Card';
-import Skeleton from '~/components/Skeleton';
+import { ListingCategories, BooksList } from './components';
 import SearchIcon from '~/assets/icons/search.svg?inline';
 
 export default {
   name: 'CategoryModule',
 
-  components: { ListingCategories, Card, SearchIcon, Skeleton },
+  components: {
+    ListingCategories,
+    SearchIcon,
+    BooksList,
+  },
 
   props: {
     allCategoriesData: {
@@ -117,17 +113,6 @@ export default {
   background-color: rgba($color: $red, $alpha: 0.2);
 }
 
-.booksList {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-  margin-top: 64px;
-
-  li {
-    margin: 32px;
-  }
-}
-
 .waitingSearch {
   display: flex;
   flex-direction: column;
@@ -139,12 +124,6 @@ export default {
 
 .secondTitle {
   color: #b1b1b1;
-}
-
-.placeholder {
-  display: flex;
-  gap: 24px;
-  height: 200px;
 }
 
 .searchIcon {

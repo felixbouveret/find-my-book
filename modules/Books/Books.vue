@@ -2,8 +2,17 @@
   <section :class="$style.booksRoot">
     <div :class="$style.container">
       <ul :class="$style.booksList">
-        <li v-for="item in moduleData" :key="item.id" :class="$style.booksItem">
-          <Card :card-data="item" />
+        <li
+          v-for="{ auteur, id, img_url, name } in moduleData"
+          :key="id"
+          :class="$style.booksItem"
+        >
+          <BookCard
+            :id="id"
+            :author="auteur"
+            :thumbnail="img_url"
+            :title="name"
+          />
         </li>
       </ul>
     </div>
@@ -11,12 +20,12 @@
 </template>
 
 <script>
-import { Card } from './components';
+import BookCard from '~/components/BookCard';
 
 export default {
   name: 'BooksModule',
 
-  components: { Card },
+  components: { BookCard },
 
   props: {
     moduleData: {
@@ -29,13 +38,20 @@ export default {
 
 <style lang="scss" module>
 .booksList {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 48px;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 64px;
 
-  list-style: none;
-}
-
-.booksItem {
-  width: 33%;
+  @media (min-width: 760px) {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 780px;
+  }
+  @media (min-width: 1000px) {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1000px;
+  }
 }
 </style>

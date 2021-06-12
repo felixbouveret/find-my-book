@@ -10,11 +10,11 @@
         <div :class="$style.infos">
           <div :class="$style.chart">
             <CommentIcon />
-            <p>{{ randomComments }}</p>
+            <p>{{ commentsNumber }}</p>
           </div>
           <div :class="$style.chart">
             <StarIcon :class="$style.star" />
-            <p>{{ grade }}</p>
+            <p>{{ gradesNumber }}</p>
           </div>
         </div>
         <button :class="$style.add" @click.prevent="addLikeToBook(id)">
@@ -69,8 +69,14 @@ export default {
   },
 
   computed: {
-    randomComments() {
-      return Math.floor(Math.random() * 100);
+    commentsNumber() {
+      if (!this.comments) return Math.floor(Math.random() * 100);
+      return this.comments;
+    },
+
+    gradesNumber() {
+      if (!this.grades) return Math.round(Math.random() * 5 * 10) / 10;
+      return this.grades;
     },
   },
 
@@ -84,19 +90,29 @@ export default {
 .container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
   width: 100%;
   height: 100%;
+
+  &:hover .view img {
+    box-shadow: 0px 4px 16px rgba($color: #000000, $alpha: 0.1);
+    transform: matrix3d(1, 0, 0, 0, 0, 1, 0, -0.0001, 0, 0, 1, 0, 0, 0, 0, 1);
+  }
 }
 
 .view {
   flex-grow: 1;
+
   img {
     display: block;
     width: 100%;
     height: 100%;
     border-radius: 8px;
     object-fit: cover;
+
+    transition-duration: 0.3s;
+
+    transition-property: transform box-shadow;
   }
 }
 

@@ -43,8 +43,6 @@ export default {
   width: 100;
   margin: 4rem 0;
 }
-.container {
-}
 .gradesHeader {
   padding: 24px;
 
@@ -54,9 +52,19 @@ export default {
 }
 .gradesList {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 48px;
-  max-width: 1000px;
+  max-width: 500px;
   margin: 0 auto;
+  margin-top: 64px;
+
+  @media (min-width: 760px) {
+    grid-template-columns: repeat(3, 1fr);
+    max-width: 780px;
+  }
+  @media (min-width: 1000px) {
+    grid-template-columns: repeat(4, 1fr);
+    max-width: 1000px;
+  }
 }
 </style>
