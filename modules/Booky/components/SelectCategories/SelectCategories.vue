@@ -5,7 +5,7 @@
       Qu'elle genre de lecteur es-tu ? Selectionne 3 catégories qui te plaisent
       dans cette liste non exhaustive.
     </p>
-    <ul :class="$style.categoryList">
+    <ul v-if="categories.length" :class="$style.categoryList">
       <li
         v-for="{ label, id } in categories"
         :key="id"
@@ -15,6 +15,13 @@
         {{ label }}
       </li>
     </ul>
+    <div v-else :class="[$style.placeholder, $style.categoryList]">
+      <Skeleton
+        v-for="skeleton in 9"
+        :key="skeleton"
+        :class="$style.skeleton"
+      />
+    </div>
     <NavButtons
       :is-active="isStepValid"
       @next-step="$emit('next-step', selectedCategories)"
@@ -25,12 +32,14 @@
 
 <script>
 import NavButtons from '../NavButtons';
+import Skeleton from '~/components/Skeleton';
 
 export default {
   name: 'SelectCategories',
 
   components: {
     NavButtons,
+    Skeleton,
   },
 
   data() {
@@ -128,5 +137,10 @@ export default {
   &.isActive {
     background-color: rgb(203, 203, 203);
   }
+}
+
+.skeleton {
+  width: 120px;
+  height: 32px;
 }
 </style>

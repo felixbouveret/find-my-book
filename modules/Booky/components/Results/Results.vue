@@ -5,7 +5,13 @@
       Voici une selection de livres que je te propose d'ajouter à ta liste !
     </p>
     <div :class="$style.bookList">
-      <Card v-for="(book, id) in books" :key="id" :card-data="book" />
+      <template v-if="books.length">
+        <Card v-for="(book, id) in books" :key="id" :card-data="book" />
+      </template>
+      <template v-else>
+        <Skeleton />
+        <Skeleton />
+      </template>
     </div>
     <NavButtons
       :is-active="true"
