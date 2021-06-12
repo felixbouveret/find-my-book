@@ -44,8 +44,8 @@ export default {
   width: 100%;
   margin: 0 auto;
   padding: 12px;
+  border: solid 2px $light-grey;
 
-  border: 0;
   border-radius: 8px;
 }
 </style>

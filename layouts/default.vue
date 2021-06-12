@@ -21,7 +21,9 @@ export default {
 <style module>
 html {
   box-sizing: border-box;
+  min-height: 100vh;
   padding-top: 80px;
+  overflow-x: hidden;
 
   font-size: 16px;
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
@@ -31,6 +33,9 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
+}
+body {
+  height: 100%;
 }
 
 *,

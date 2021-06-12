@@ -1,13 +1,12 @@
 <template>
-  <div :class="$style.navbar">
+  <header
+    ref="header"
+    :class="[$style.navbar, { [$style.shadowBar]: shadowBar }]"
+  >
     <Wrapper :class="$style.inner">
       <div :class="$style.left">
         <a href="/">
-          <img
-            :class="$style.logo"
-            src="~/assets/img/findmybooklogo.svg"
-            alt=""
-          />
+          <Logo :class="$style.logo" />
         </a>
         <Links />
       </div>
@@ -29,26 +28,38 @@
         <LogLinks />
       </div>
     </Wrapper>
-  </div>
+  </header>
 </template>
 
 <script>
 import { Links, LogLinks, SearchBarResults } from './components';
 import SearchBar from '~/components/SearchBar';
+import Logo from '~/assets/img/findmybooklogo.svg?inline';
 
 export default {
   name: 'NavbarModule',
 
-  components: { Links, LogLinks, SearchBar, SearchBarResults },
+  components: { Links, LogLinks, SearchBar, SearchBarResults, Logo },
 
   data() {
     return {
       searchResults: null,
       searchQuery: null,
+      shadowBar: false,
     };
   },
 
+  mounted() {
+    this.shadowOnScroll();
+  },
+
   methods: {
+    shadowOnScroll() {
+      document.addEventListener('scroll', (e) => {
+        if (window.pageYOffset) this.shadowBar = true;
+        if (!window.pageYOffset) this.shadowBar = false;
+      });
+    },
     setResults({ res, searchQuery }) {
       this.searchResults = res;
       this.searchQuery = searchQuery;
@@ -59,6 +70,13 @@ export default {
 
 <style lang="scss" module>
 .navbar {
+  padding: 0 24px;
+
+  transition-duration: 0.3s;
+  transition-property: background-color, box-shadow;
+}
+
+.shadowBar {
   background-color: $light-grey;
   box-shadow: 0 6.7px 5.3px rgba(0, 0, 0, 0.028),
     0 22.3px 17.9px rgba(0, 0, 0, 0.042), 0 100px 80px rgba(0, 0, 0, 0.07);
@@ -71,7 +89,7 @@ export default {
 }
 
 .logo {
-  height: 60px;
+  height: 32px;
 }
 
 .searchBar {
