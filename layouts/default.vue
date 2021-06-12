@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div :class="$style.root">
     <Header />
     <Nuxt />
     <Footer />
@@ -33,9 +33,6 @@ html {
   -webkit-text-size-adjust: 100%;
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
-}
-body {
-  height: 100%;
 }
 
 *,

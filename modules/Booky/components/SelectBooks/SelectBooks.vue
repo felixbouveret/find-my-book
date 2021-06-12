@@ -5,7 +5,7 @@
       Parmis ces livres, lesquels te donnent le plus envie ? Choisis les bien,
       tu ne peux en selectionner que 3 !
     </p>
-    <ul :class="$style.categoryList">
+    <ul v-if="books.length" :class="$style.bookList">
       <li
         v-for="{ name, id } in books"
         :key="id"
@@ -15,6 +15,13 @@
         {{ name }}
       </li>
     </ul>
+    <div v-else :class="[$style.placeholder, $style.bookList]">
+      <Skeleton
+        v-for="skeleton in 9"
+        :key="skeleton"
+        :class="$style.skeleton"
+      />
+    </div>
     <NavButtons
       :is-active="isStepValid"
       @next-step="$emit('next-step', selectedBooks)"
@@ -105,12 +112,17 @@ export default {
   line-height: 24px;
 }
 
-.categoryList {
+.bookList {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
   margin-top: 24px;
+}
+
+.skeleton {
+  width: 120px;
+  height: 32px;
 }
 
 .category {

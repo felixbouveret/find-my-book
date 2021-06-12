@@ -10,14 +10,11 @@
         :selected-category="categoryId"
         @set-category="categoryId = $event"
       />
-      <div v-if="categoryId" :class="$style.booksListing">
-        <ul v-if="!isLoading" :class="$style.booksList">
-          <li v-for="item in bookList" :key="item.id" :class="$style.booksItem">
-            <Card :card-data="item" />
-          </li>
-        </ul>
-        <Squeleton v-else />
-      </div>
+      <BooksList
+        v-if="categoryId"
+        :book-list="bookList"
+        :is-loading="isLoading"
+      />
       <div v-else :class="$style.waitingSearch">
         <h2 :class="$style.secondTitle">Sélectionne une catégorie stp ^^</h2>
 
@@ -30,15 +27,17 @@
 </template>
 
 <script>
-import { ListingCategories } from './components';
-import Card from '~/components/Card';
-import Squeleton from '~/components/Squeleton';
+import { ListingCategories, BooksList } from './components';
 import SearchIcon from '~/assets/icons/search.svg?inline';
 
 export default {
   name: 'CategoryModule',
 
-  components: { ListingCategories, Card, SearchIcon, Squeleton },
+  components: {
+    ListingCategories,
+    SearchIcon,
+    BooksList,
+  },
 
   props: {
     allCategoriesData: {
@@ -90,7 +89,7 @@ export default {
 
 <style lang="scss" module>
 .categoryRoot {
-  margin-top: 48px;
+  margin: 64px 0 80px;
 }
 
 .booksListing {
@@ -98,7 +97,8 @@ export default {
 }
 
 .title {
-  margin-bottom: 16px;
+  max-width: 600px;
+  margin: 16px auto 0 auto;
 
   font-size: 32px;
   line-height: 38px;
@@ -106,23 +106,11 @@ export default {
 }
 
 .categoryList {
-  margin-top: 32px;
+  margin-top: 48px;
   padding: 24px;
   border-radius: 8px;
 
-  background-color: rgba($color: #fafafa, $alpha: 1);
-}
-
-.booksList {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  margin-top: 64px;
-
-  li {
-    margin: 32px;
-  }
+  background-color: rgba($color: $red, $alpha: 0.2);
 }
 
 .waitingSearch {
@@ -144,10 +132,10 @@ export default {
   padding: 8px;
   border-radius: 48px;
 
-  background-color: rgba($color: #f2f2f2, $alpha: 1);
+  background-color: rgba($color: $red, $alpha: 0.2);
 
   svg {
-    fill: rgba($color: #b1b1b1, $alpha: 1);
+    fill: rgba($color: $red, $alpha: 0.5);
   }
 }
 </style>

@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: 'Squeleton',
+  name: 'Skeleton',
 };
 </script>
 
@@ -12,13 +12,14 @@ export default {
 .container {
   position: relative;
 
-  height: 200px;
+  width: 100%;
+  height: 100%;
   border-radius: 8px;
   overflow: hidden;
 
-  background-color: rgba($color: #c7c7c7, $alpha: 1);
+  background-color: rgba($color: $light-grey, $alpha: 1);
 
-  &::before {
+  &::before :global {
     position: absolute;
     top: 0;
     left: -150px;
@@ -34,13 +35,13 @@ export default {
       transparent 100%
     );
 
-    animation: load 1s ease infinite linear;
+    animation: load 1s ease infinite;
 
     content: '';
   }
 }
 
-@keyframes load {
+@keyframes :global(load) {
   from {
     left: -150px;
   }

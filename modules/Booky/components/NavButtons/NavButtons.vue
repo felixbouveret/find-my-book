@@ -5,7 +5,7 @@
       :is-disabled="!isActive"
       @click="isActive ? $emit('next-step') : null"
     >
-      Suivant
+      {{ nextStepWording }}
     </Button>
   </div>
 </template>
@@ -17,6 +17,10 @@ export default {
     isActive: {
       type: Boolean,
       default: false,
+    },
+    nextStepWording: {
+      type: String,
+      default: 'Suivant',
     },
   },
 };
