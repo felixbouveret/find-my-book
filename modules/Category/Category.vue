@@ -12,11 +12,14 @@
       />
       <div v-if="categoryId" :class="$style.booksListing">
         <ul v-if="!isLoading" :class="$style.booksList">
-          <li v-for="item in bookList" :key="item.id" :class="$style.booksItem">
+          <li v-for="item in bookList" :key="item.id" :class="$style.bookItem">
             <Card :card-data="item" />
           </li>
         </ul>
-        <Squeleton v-else />
+        <div v-else :class="$style.placeholder">
+          <Skeleton />
+          <Skeleton />
+        </div>
       </div>
       <div v-else :class="$style.waitingSearch">
         <h2 :class="$style.secondTitle">Sélectionne une catégorie stp ^^</h2>
@@ -32,13 +35,13 @@
 <script>
 import { ListingCategories } from './components';
 import Card from '~/components/Card';
-import Squeleton from '~/components/Squeleton';
+import Skeleton from '~/components/Skeleton';
 import SearchIcon from '~/assets/icons/search.svg?inline';
 
 export default {
   name: 'CategoryModule',
 
-  components: { ListingCategories, Card, SearchIcon, Squeleton },
+  components: { ListingCategories, Card, SearchIcon, Skeleton },
 
   props: {
     allCategoriesData: {
@@ -115,10 +118,9 @@ export default {
 }
 
 .booksList {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
   margin-top: 64px;
 
   li {
@@ -137,6 +139,12 @@ export default {
 
 .secondTitle {
   color: #b1b1b1;
+}
+
+.placeholder {
+  display: flex;
+  gap: 24px;
+  height: 200px;
 }
 
 .searchIcon {
