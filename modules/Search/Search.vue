@@ -48,28 +48,27 @@ export default {
 <style lang="scss" module>
 .searchRoot {
   width: 100;
-  .container {
-    .searchHeader {
-      padding: 24px;
+  margin: 80px 0;
+}
 
-      h1 {
-        text-align: center;
-      }
-    }
-    .searchResults {
-      .searchList {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        justify-content: center;
+.searchHeader {
+  padding: 24px;
 
-        list-style: none;
+  h1 {
+    text-align: center;
+  }
+}
 
-        li {
-          margin: 16px;
-        }
-      }
-    }
+.searchList {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  list-style: none;
+
+  li {
+    margin: 16px;
   }
 }
 </style>

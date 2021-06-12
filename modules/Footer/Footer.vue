@@ -1,12 +1,8 @@
 <template>
-  <div :class="$style.footer">
+  <footer :class="$style.footer">
     <Wrapper :class="$style.inner">
       <a href="/">
-        <img
-          :class="$style.logo"
-          src="~/assets/img/findmybooklogo.svg"
-          alt=""
-        />
+        <Logo :class="$style.logo" />
       </a>
       <a href="">Mentions légales</a>
       <a href="">Conditions d'utilisations</a>
@@ -15,19 +11,22 @@
         Denage
       </p>
     </Wrapper>
-  </div>
+  </footer>
 </template>
 
 <script>
+import Logo from '~/assets/img/findmybooklogo.svg?inline';
+
 export default {
   name: 'FooterModule',
+  components: {
+    Logo,
+  },
 };
 </script>
 
 <style lang="scss" module>
 .footer {
-  padding: 24px;
-
   background-color: $light-grey;
 }
 
@@ -35,9 +34,10 @@ export default {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 32px 0;
 }
 
 .logo {
-  height: 60px;
+  height: 40px;
 }
 </style>

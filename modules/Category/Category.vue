@@ -90,7 +90,7 @@ export default {
 
 <style lang="scss" module>
 .categoryRoot {
-  margin-top: 48px;
+  margin: 64px 0 80px;
 }
 
 .booksListing {
@@ -98,7 +98,8 @@ export default {
 }
 
 .title {
-  margin-bottom: 16px;
+  max-width: 600px;
+  margin: 16px auto 0 auto;
 
   font-size: 32px;
   line-height: 38px;
@@ -106,11 +107,11 @@ export default {
 }
 
 .categoryList {
-  margin-top: 32px;
+  margin-top: 48px;
   padding: 24px;
   border-radius: 8px;
 
-  background-color: rgba($color: #fafafa, $alpha: 1);
+  background-color: rgba($color: $red, $alpha: 0.2);
 }
 
 .booksList {
@@ -144,10 +145,10 @@ export default {
   padding: 8px;
   border-radius: 48px;
 
-  background-color: rgba($color: #f2f2f2, $alpha: 1);
+  background-color: rgba($color: $red, $alpha: 0.2);
 
   svg {
-    fill: rgba($color: #b1b1b1, $alpha: 1);
+    fill: rgba($color: $red, $alpha: 0.5);
   }
 }
 </style>
